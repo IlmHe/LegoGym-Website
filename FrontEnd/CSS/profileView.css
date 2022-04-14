@@ -1,45 +1,32 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
 * {
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
 }
-
 body {
 }
-
 html {
-    background: url("https://wallpapercave.com/wp/wp1819029.jpg") no-repeat center center fixed;
+    background: url("Images/tylypahkapimea.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-
 main {
-    max-width: 900px;
-    background-color: #ffffff;
+    max-width: 1000px;
+    background-color: rgb(255,255,255);
     margin: auto;
     padding: 30px;
-    border-radius: 7px;
 }
-
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #5315B0;
+    border-bottom: 2px solid rgb(0,0,0);
 }
-
-ul {
-    list-style-type: none;
-    padding: 0;
-
-}
-
-li {
-    padding: 3px;
+#lego {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    clip-path: polygon(100% 30%, 100% 60%, 0 60%, 0 30%, 18% 30%, 18% 21%, 30% 21%, 30% 30%, 65% 30%, 65% 21%, 76% 21%, 76% 30%);
 }
 
 nav ul {
@@ -47,109 +34,66 @@ nav ul {
     list-style-type: none;
     padding-left: 10px;
 }
-
 nav ul li {
     padding: 5px;
 }
-
 nav li a {
     text-decoration: none;
+    color: rgb(255,0,0);
+    transition: color 1s;
 }
-
+a:hover {
+    color: rgb(0,0,0);
+}
 button {
-    background-color: #A92CB7;
-    color: white;
-    padding: 10px;
-    border: none;
+    background-color: rgba(19, 165, 218, 0.64);
+    width: 60px;
+    height: 40px;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    transition: color 0.3s;
+    display: flex;
+    transition: background-color 1s;
 }
-
 button:hover {
-    background-color: #CCE8CC;
-    color: #371662;
+    background-color: rgb(0,0,255);
 }
-
 article {
     height: 60vh;
-    background-color: #ffffff;
     display: flex;
-    margin-top: 30px;
-    gap: 25px;
-}
+    flex-direction: row;
+    gap: 30px;
 
+}
 .vasen {
-    background-color: #E2B6CF;
+    background-color: rgb(220, 193, 20);
     flex: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 8px;
 }
-
 .oikea {
     display: flex;
-    flex: 5;
+    flex: 4;
     flex-direction: column;
 }
-
 .yla {
-    background: url("https://i.ytimg.com/vi/7KFa6TlGegs/maxresdefault.jpg") no-repeat center center;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    background: url("../../../../HTML-CSS-Viikko4/Images/LegoHarry (1).jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: contain;
     flex: 3;
-    width: 45%;
-    clip-path: circle(50% at 50% 50%);
-    display: flex;
-    align-self: center;
 }
-
 .ala {
-    background-color: #ffffff;
+    background-color: rgb(255,255,255);
     flex: 2;
+}
+footer {
     display: flex;
-    flex-direction: column;
-
+    background-color: rgb(128,128,128);
+    height: 100px;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
-    clip-path: polygon(5% 0, 80% 0%, 100% 0, 100% 100%, 80% 100%, 0 100%, 39% 75%, 39% 26%);
-    shape-outside: polygon(5% 0, 80% 0%, 100% 0, 100% 100%, 80% 100%, 0 100%, 39% 75%, 39% 26%);
-}
-
-footer {
-    height: 70px;
-    background-color: #A16DEE;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    margin-top: 30px;
-}
-
-.fa.fa-home {
-    font-size: 40px;
-    padding-right: 10px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#Username {
-    align-self: center;
-}
-
-#profilePosts {
-    margin: 0;
-}
-
-.postImage {
-    float: right;
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
