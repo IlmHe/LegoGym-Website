@@ -81,3 +81,5 @@ typings/
 # idea directory
 .idea/
 
+.tables.sql/
+
