@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const cors = require('cors');
-const userRoute = require('./Backend/routes/userRoute');
+const userRoute = require('./Backend/Routes/userRoute');
 //const postRoute = require('./Backend/routes/postRoute');
 //const gymMoveRoute = require('./Backend/routes/gymMoveRoute');
 const app = express();

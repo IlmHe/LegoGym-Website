@@ -5,8 +5,8 @@ const express = require(`express`);
 const multer = require('multer');
 */
 const {body} = require('express-validator');
+const userController = require('../Controllers/userController');
 const router = express.Router();
-const userController = require('../controllers/userController');
 
 
 /*const fileFilter = (req, file, cb) => {
@@ -30,6 +30,11 @@ const upload = multer({dest: './uploads/', fileFilter});*/
     body('owner').isNumeric(),
     userController.user_post)
 .put(userController.user_update);*/
+router.route(`/`)
+.get(userController.user_list_get)
+.post(userController.user_post)
+.put(userController.user_update);
+
 
 router.route(`/:id`)
 .get(userController.user_get_by_id)

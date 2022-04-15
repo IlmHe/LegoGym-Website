@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllUsers = async (res) => {
   try {
-    const [rows] = await promisePool.query('SELECT * FROM users');
+    const [rows] = await promisePool.query('SELECT * FROM Users');
     return rows;
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
@@ -16,7 +16,7 @@ const getAllUsers = async (res) => {
 
 const getUserId = async (id, res) => {
   try {
-    const [rows] = await promisePool.query('SELECT * FROM users WHERE User_id = ?', [id]);
+    const [rows] = await promisePool.query('SELECT * FROM Users WHERE UserId = ?', [id]);
     return rows[0];
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
@@ -28,8 +28,8 @@ const getUserId = async (id, res) => {
 
 const createUser = async (User, res) => {
   try {
-    const [rows] = await promisePool.query(`INSERT INTO users(name, weight, owner, filename, birthdate) VALUES (?,?,?,?,?)`,
-        [User.name, User.weight, User.owner, User.filename, User.birthdate]);
+    const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfilePic, ProfileText) VALUES (?,?,?,?,?)`,
+        [User.Username, User.Email, User.Password, User.ProfilePic, User.ProfileText]);
     console.log(`User model insert`, rows, rows[0]);
     return rows.insertId;
   } catch (e) {
@@ -41,8 +41,8 @@ const createUser = async (User, res) => {
 
 const updateUser = async (User, res) => {
   try {
-    const [rows] = await promisePool.query("UPDATE `users` SET name = ?, birthdate = ?, weight = ?, owner = ? WHERE User_id = ?",
-        [User.name, User.birthdate, User.weight, User.owner, User.id]);
+    const [rows] = await promisePool.query("UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfilePic = ?, ProfileText = ? WHERE UserId = ?",
+        [User.Username, User.Email, User.Password, User.ProfilePic, User.ProfileText]);
     console.log(`User model update`, rows,);
     return rows.affectedRows === 1;
   } catch (e) {
@@ -54,7 +54,7 @@ const updateUser = async (User, res) => {
 
 const deleteUser = async (id, res) => {
   try {
-    const [rows] = await promisePool.query('DELETE FROM users WHERE User_id = ?', [id]);
+    const [rows] = await promisePool.query('DELETE FROM Users WHERE UserId = ?', [id]);
     console.log(`User model delete`, rows,);
     return rows.affectedRows === 1;
   } catch (e) {
