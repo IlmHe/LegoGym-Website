@@ -1,99 +1,88 @@
-* {
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+}
+
+.container {
+    max-width: 40em;
+    margin: auto;
+    padding: 1em;
+}
+
+.light-border {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 1em;
     box-sizing: border-box;
 }
-body {
-}
-html {
-    background: url("Images/tylypahkapimea.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-main {
-    max-width: 1000px;
-    background-color: rgb(255,255,255);
-    margin: auto;
-    padding: 30px;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid rgb(0,0,0);
-}
-#lego {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    clip-path: polygon(100% 30%, 100% 60%, 0 60%, 0 30%, 18% 30%, 18% 21%, 30% 21%, 30% 30%, 65% 30%, 65% 21%, 76% 21%, 76% 30%);
-}
 
-nav ul {
-    display: flex;
+ul {
+    margin: 0;
+    padding: 0;
     list-style-type: none;
-    padding-left: 10px;
+    display: flex;
+    flex-wrap: nowrap;
 }
-nav ul li {
-    padding: 5px;
+
+li {
+    width: 30%;
+    margin: 0.5em;
 }
-nav li a {
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+.resp {
+    width: 100%;
+}
+
+.forms {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-wrapper {
+    width: 33%;
+}
+
+input,
+button,
+select {
+    display: inline-block;
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+select {
+    line-height: 1.5em;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+}
+
+.button {
+    background-color: #ccc;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    margin: 0.5em 0;
+    border: 1px rgb(74, 74, 74) solid;
+    text-align: center;
     text-decoration: none;
-    color: rgb(255,0,0);
-    transition: color 1s;
-}
-a:hover {
-    color: rgb(0,0,0);
-}
-button {
-    background-color: rgba(19, 165, 218, 0.64);
-    width: 60px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    transition: background-color 1s;
-}
-button:hover {
-    background-color: rgb(0,0,255);
-}
-article {
-    height: 60vh;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-
-}
-.vasen {
-    background-color: rgb(220, 193, 20);
-    flex: 1;
-}
-.oikea {
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-}
-.yla {
-    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-    background: url("../../../../HTML-CSS-Viikko4/Images/LegoHarry (1).jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-    flex: 3;
-}
-.ala {
-    background-color: rgb(255,255,255);
-    flex: 2;
-}
-footer {
-    display: flex;
-    background-color: rgb(128,128,128);
-    height: 100px;
-    justify-content: center;
-    align-items: center;
 }
 
-img {
-    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+.single img {
+    width: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 30rem;
 }

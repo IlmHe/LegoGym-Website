@@ -25,7 +25,6 @@ const getUserId = async (id, res) => {
   }
 };
 
-
 const createUser = async (User, res) => {
   try {
     const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfilePic, ProfileText) VALUES (?,?,?,?,?)`,

@@ -2,64 +2,30 @@
 <html>
 
 <head>
-    <title>Positioning Items</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../CSS/profileView.css">
+    <meta charset="utf8">
+    <title>Example</title>
+    <link href="../css/loginView.css" rel="stylesheet">
 </head>
 
 <body>
-
-<!-- koko sivu -->
-<main>
-
-    <!-- header osio -->
-    <header>
-        <nav>
-            <ul class="header">
-                <i class="fa fa-home"></i>
-                <li><a href="index.html"> Koti</a></li>
-                <li><a href="index.html"> Koti2</a></li>
-                <li><a href="index.html"> Koti3</a></li>
-            </ul>
-        </nav>
-        <button>Login</button>
-    </header>
-
-    <!-- sisältö jossa linkkilista ja kuva -->
-    <article>
-
-        <div class="vasen">
-            <ul>
-                <h3>Recent posts</h3>
-                <li>Post one</li>
-                <li>Post two</li>
-            </ul>
+<div class="container">
+    <hr>
+    <div class="forms">
+        <div class="form-wrapper">
+            <h3>Add user</h3>
+            <form action="http://localhost:3000/user" method="post" class="light-border" id="addUserForm">
+                <input class="light-border" type="text" name="Username" placeholder="Name" required minlength="3">
+                <input class="light-border" type="email" name="Email" placeholder="email" required >
+                <input class="light-border" type="password" name="Password" placeholder="Password" required pattern="(?=.*[A-Z]).{8,}">
+                <input class="light-border" type="text" name="ProfilePic" placeholder="profile pic" required >
+                <input class="light-border" type="text" name="ProfileText" placeholder="profile text" required >
+                <button class="light-border" type="submit">Save</button>
+            </form>
         </div>
-        <div class="oikea">
-            <h3 id="Username">Lego lover 123</h3>
-            <div class="yla"></div>
-            <div class="ala">
-                <h4 id="profilePosts">Lego lover 123 posts</h4>
-                <p class ="postText"><img src="https://i.ytimg.com/vi/XANxTy4rwMA/maxresdefault.jpg" width="200" height="100"
-                        class="postImage">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ipsa iste
-                    reprehenderit
-                    sit! A autem, consectetur cum dignissimos, eaque enim exercitationem hic molestias non nostrum odit
-                    quaerat quo similique velit.</p></div>
-        </div>
-
-    </article>
-
-    <!-- alatunniste-->
-    <footer>
-        <p>
-            Gutless, cold masts darkly loot a rainy, mighty scallywag.
-        </p>
-    </footer>
-
-</main>
-
+    </div>
+</div>
+<script src="../js/serialize.js"></script>
+<script src="../js/add-user.js"></script>
 </body>
 
 </html>
