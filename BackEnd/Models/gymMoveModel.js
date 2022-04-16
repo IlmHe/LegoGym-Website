@@ -1,0 +1,57 @@
+'use strict';
+const pool = require('../Database/db');
+const promisePool = pool.promise();
+
+const getAllGymMoves = async (res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM GymMoves');
+    return rows;
+  } catch (e) {
+    console.error('GymMove model getAllGymMoves error', e.message);
+    res.status(500).json({ message: "Something went wrong"});
+    return;
+  }
+};
+
+const getGymMoveId = async (id, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM GymMoves WHERE GymMoveId = ?', [id]);
+    return rows[0];
+  } catch (e) {
+    console.error('GymMove model getGymMoveId error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+const createGymMove = async (gymMove, res) => {
+  try {
+    const [rows] = await promisePool.query(`INSERT INTO GymMoves(MoveName, Category, Likes, Comments) VALUES (?,?,?,?)`,
+        [gymMove.MoveName, gymMove.Category, gymMove.Likes, gymMove.Comments]);
+    console.log(`GymMove model insert`, rows, rows[0]);
+    return rows.insertId;
+  } catch (e) {
+    console.error('GymMove model createGymMove error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+const deleteGymMove = async (id, res) => {
+  try {
+    const [rows] = await promisePool.query('DELETE FROM GymMoves WHERE GymMoveId = ?', [id]);
+    console.log(`GymMove model delete`, rows,);
+    return rows.affectedRows === 1;
+  } catch (e) {
+    console.error('GymMove model delete Move error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+module.exports = {
+  getAllGymMoves,
+  getGymMoveId,
+  createGymMove,
+  deleteGymMove,
+};
