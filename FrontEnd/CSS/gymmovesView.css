@@ -4,7 +4,7 @@
 body {
 }
 html {
-    background: url("Images/tylypahkapimea.jpg") no-repeat center center fixed;
+    background: url("FrontEnd/Images/tylypahkapimea.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

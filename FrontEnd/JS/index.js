@@ -1,4 +1,5 @@
 'use strict';
+/*
 //Populate header
 const headerText = `
 <nav id="navLinks">
@@ -21,6 +22,8 @@ const footerText = `
 `;
 
 document.querySelector('footer').innerHTML = footerText;
+
+ */
 
 //Populate right div
 const rightDivText = `<h3 class ="headingFont" id ="userNameText"> Usernameasddddddddddddddd </h3>
