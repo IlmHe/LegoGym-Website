@@ -29,9 +29,27 @@ const gymMove_delete_by_id = async (req, res) => {
   res.json({message: `gymMove deleted ${gymMoveDeleted}`});
 };
 
+//Lisätty
+const gymMove_get_moveoftheDay = async (req, res) => {
+  console.log(`gymMove controller get move of the day`);
+  const gymMove = await gymMoveModel.getGymMoveofTheDay(res);
+  console.log(`gymMove get move of the day`, gymMove);
+  res.json(gymMove || {});
+};
+
+//Lisätty
+const gymMove_get_By_category = async (req, res) => {
+  console.log(`gymMove controller get by category`, req.params.category);
+  const gymMove = await gymMoveModel.getGymMovebyCategory(req.params.category, res);
+  console.log(`gymMove get by category`, gymMove);
+  res.json(gymMove || {});
+};
+
 module.exports = {
   gymMove_list_get,
   gymMove_get_by_id,
   gymMove_post,
-  gymMove_delete_by_id
+  gymMove_delete_by_id,
+  gymMove_get_moveoftheDay,
+  gymMove_get_By_category
 };

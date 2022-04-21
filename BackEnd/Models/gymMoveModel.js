@@ -49,9 +49,35 @@ const deleteGymMove = async (id, res) => {
   }
 };
 
+//Lisätty
+const getGymMoveofTheDay = async (res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM GymMoves ORDER BY RAND() LIMIT 1');
+    return rows[0];
+  } catch (e) {
+    console.error('GymMove model getGymMoveofTheDay error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+//Lisätty
+const getGymMovebyCategory = async (category, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM GymMoves WHERE Category = ?', [category]);
+    return rows[0];
+  } catch (e) {
+    console.error('GymMove model getGymMovebyCategory error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllGymMoves,
   getGymMoveId,
   createGymMove,
   deleteGymMove,
+  getGymMoveofTheDay,
+  getGymMovebyCategory
 };
