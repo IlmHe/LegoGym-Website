@@ -3,12 +3,14 @@
 const headerText = `
 <nav id="navLinks">
 <ul class="headingFont">
-<li> <a href="front.html"> Koti</a> </li>
-<li> <a href="front.html"> Koti2</a> </li>
-<li> <a href="front.html"> Koti3</a> </li>
+<li> <a href="index.html"> Home</a> </li>
+<li> <a href="postView.html"> Posts</a> </li>
+<li> <a href="gymmovesView.html"> Gym Moves</a> </li>
 </ul>
 </nav>
-<button class="headingFont">Login</button>
+<p class="profileNav"><a id="profileLink" href="profileView.html"> LegoLover123</a> <img class="profilePic" width="40px" height="50px" src="../Images/ProfilePics/LegoChewbaccaProPic.jpg"> </p>
+
+<button class="headingFont" onclick="location.href='loginView.html'">Login</button>
 `;
 
 document.querySelector('header').innerHTML = headerText;
