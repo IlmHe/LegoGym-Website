@@ -49,9 +49,48 @@ const deletePost = async (id, res) => {
   }
 };
 
+//Lisätty
+const getRecentPosts = async (res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM Posts ORDER BY PostId DESC LIMIT 2');
+    return rows;
+  } catch (e) {
+    console.error('Post model getRecentPosts error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+//Lisätty
+const getPostsByCategory = async (category, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM Posts WHERE Category = ?', [category]);
+    return rows;
+  } catch (e) {
+    console.error('Post model getPostsByCategory error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+//Lisätty
+const getPostsCreatedByUser = async (userId, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM Posts WHERE CreatedById = ?', [userId]);
+    return rows;
+  } catch (e) {
+    console.error('Post model getPostsCreatedByUser error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllPosts,
   getPostbyId,
   createPost,
   deletePost,
+  getRecentPosts,
+  getPostsByCategory,
+  getPostsCreatedByUser,
 };
