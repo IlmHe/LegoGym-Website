@@ -1,4 +1,3 @@
-
 article {
     height: 60vh;
     display: flex;
@@ -37,6 +36,7 @@ article {
     width: 100%;
     height: auto;
 }
+
 #profilePic {
     clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
     padding: 10px;
