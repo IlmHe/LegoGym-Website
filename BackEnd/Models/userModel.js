@@ -3,6 +3,9 @@
 const pool = require('../Database/db');
 const promisePool = pool.promise();
 
+/**
+ * Returns all users from the database, else returns an error
+ */
 const getAllUsers = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Users');
@@ -14,6 +17,9 @@ const getAllUsers = async (res) => {
   }
 };
 
+/**
+ * Returns a user by id, else returns an error
+ */
 const getUserId = async (id, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Users WHERE UserId = ?', [id]);
@@ -25,6 +31,9 @@ const getUserId = async (id, res) => {
   }
 };
 
+/**
+ * Adds a user to the database, else returns an error
+ */
 const createUser = async (User, res) => {
   try {
     const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfilePic, ProfileText) VALUES (?,?,?,?,?)`,
@@ -38,6 +47,9 @@ const createUser = async (User, res) => {
   }
 };
 
+/**
+ * Modifies a user in the database, else returns an error
+ */
 const updateUser = async (User, res) => {
   try {
     const [rows] = await promisePool.query("UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfilePic = ?, ProfileText = ? WHERE UserId = ?",
@@ -51,6 +63,9 @@ const updateUser = async (User, res) => {
   }
 };
 
+/**
+ * Deletes a user from the database, else returns an error
+ */
 const deleteUser = async (id, res) => {
   try {
     const [rows] = await promisePool.query('DELETE FROM Users WHERE UserId = ?', [id]);

@@ -1,10 +1,11 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
 
-// select existing html elements
 const addUserForm = document.querySelector('#addUserForm');
 
-// submit add user form
+/**
+ * POST method to add a new user to the database
+ */
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
@@ -13,7 +14,7 @@ addUserForm.addEventListener('submit', async (evt) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    body: JSON.stringify(data),
   };
 
   const response = await fetch(url + '/user', fetchOptions);

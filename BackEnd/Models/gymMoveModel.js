@@ -2,6 +2,11 @@
 const pool = require('../Database/db');
 const promisePool = pool.promise();
 
+/**
+ * @description: This function is used to get all gym moves from the database
+ * @param {object} res
+ * @returns {object} rows
+ */
 const getAllGymMoves = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves');
@@ -13,6 +18,9 @@ const getAllGymMoves = async (res) => {
   }
 };
 
+/**
+ * Returns a gym move by id, else returns an error
+ */
 const getGymMoveId = async (id, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves WHERE GymMoveId = ?', [id]);
@@ -24,6 +32,9 @@ const getGymMoveId = async (id, res) => {
   }
 };
 
+/**
+ * Adds a gym move to the database, else returns an error
+ */
 const createGymMove = async (gymMove, res) => {
   try {
     const [rows] = await promisePool.query(`INSERT INTO GymMoves(MoveName, Category, Likes, Comments) VALUES (?,?,?,?)`,
@@ -37,6 +48,9 @@ const createGymMove = async (gymMove, res) => {
   }
 };
 
+/**
+ * Deletes a gym move from the database, else returns an error
+ */
 const deleteGymMove = async (id, res) => {
   try {
     const [rows] = await promisePool.query('DELETE FROM GymMoves WHERE GymMoveId = ?', [id]);

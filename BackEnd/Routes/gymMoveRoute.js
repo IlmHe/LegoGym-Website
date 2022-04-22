@@ -7,6 +7,10 @@ const {body} = require('express-validator');
 const gymMoveController = require('../Controllers/gymMoveController');
 const router = express.Router();
 
+/*
+* Gym move routes
+ */
+
 router.route(`/`)
 .get(gymMoveController.gymMove_list_get)
 .post(gymMoveController.gymMove_post)

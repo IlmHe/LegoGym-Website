@@ -8,6 +8,9 @@ const {body} = require('express-validator');
 const userController = require('../Controllers/userController');
 const router = express.Router();
 
+/*
+* User move routes
+ */
 
 /*const fileFilter = (req, file, cb) => {
   const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
