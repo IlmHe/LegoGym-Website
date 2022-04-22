@@ -16,8 +16,17 @@ router.route(`/`)
 .post(gymMoveController.gymMove_post)
 
 
+
 router.route(`/:id`)
 .get(gymMoveController.gymMove_get_by_id)
 .delete(gymMoveController.gymMove_delete_by_id);
+
+//Lisätty
+router.route('/category/:category')
+.get(gymMoveController.gymMove_get_By_category);
+
+//Lisätty
+router.route('/moveoftheday/:moveoftheday')
+.get(gymMoveController.gymMove_get_moveoftheDay);
 
 module.exports = router;
