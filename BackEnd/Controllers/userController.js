@@ -1,22 +1,37 @@
 'use strict';
-// userController
 const userModel = require('../models/userModel');
 const {validationResult} = require('express-validator')
 
+/**
+ * @description: This function is used to get all the users
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} users
+ */
 const user_list_get = async (req, res) => {
   const users = await userModel.getAllUsers(res);
   res.json(users);
 };
 
+/**
+ * @description: This function is used to get a single user
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} user
+ */
 const user_get_by_id = async (req, res) => {
   console.log(`user controller get by id`, req.params.id);
   const user = await userModel.getUserId(req.params.id, res);
   console.log(`user get by id`, user);
-  //res.send(`From this endpoint you can get users by ${req.params.id}.`);
   res.json(user || {});
-
 };
 
+/**
+ * @description: This function is used to create a new user
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} user
+ */
 const user_post = async (req, res) => {
   console.log(`user controller post body`, req.body);
   const user = req.body;
@@ -56,15 +71,25 @@ const user_post = async (req, res) => {
 };
  */
 
-
+/**
+ * @description: This function is used to update a user
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} user
+ */
 const user_update = async (req, res) => {
   console.log(`user controller put`, req.body);
   const user = req.body;
   const modified = await userModel.updateUser(user, res);
-  //res.json({message: `user modified: ${modified}`});
   console.log({message: `user modified ${modified}`});
 };
 
+/**
+ * @description: This function is used to delete a user
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} user
+ */
 const user_delete_by_id = async (req, res) => {
   console.log(`user controller delete by id`, req.params.id);
   const userDeleted = await userModel.deleteUser(req.params.id, res);

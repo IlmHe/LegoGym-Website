@@ -2,6 +2,9 @@
 const pool = require('../Database/db');
 const promisePool = pool.promise();
 
+/**
+ * Returns all posts from the database, else returns an error
+ */
 const getAllPosts = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts');
@@ -13,6 +16,9 @@ const getAllPosts = async (res) => {
   }
 };
 
+/**
+ * Returns a post move by id, else returns an error
+ */
 const getPostbyId = async (id, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts WHERE PostId = ?', [id]);
@@ -24,6 +30,9 @@ const getPostbyId = async (id, res) => {
   }
 };
 
+/**
+ * Adds a post to the database, else returns an error
+ */
 const createPost = async (post, res) => {
   try {
     const [rows] = await promisePool.query(`INSERT INTO Posts(PostText, PostImage, Category, CreatedById, PostComment, PostLike) VALUES (?,?,?,?,?,?)`,
@@ -37,6 +46,9 @@ const createPost = async (post, res) => {
   }
 };
 
+/**
+ * Deletes a post from the database, else returns an error
+ */
 const deletePost = async (id, res) => {
   try {
     const [rows] = await promisePool.query('DELETE FROM Posts WHERE PostId = ?', [id]);

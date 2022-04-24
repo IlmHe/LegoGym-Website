@@ -7,6 +7,10 @@ const {body} = require('express-validator');
 const postController = require('../Controllers/postController');
 const router = express.Router();
 
+/*
+* Post routes
+ */
+
 router.route(`/`)
 .get(postController.post_list_get)
 .post(postController.post_post);

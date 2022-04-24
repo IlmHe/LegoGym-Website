@@ -1,5 +1,8 @@
 'use strict';
-//Populate header
+
+/*
+ * Populate header
+ */
 const headerText = `
 <nav id="navLinks">
 <ul class="headingFont">
@@ -15,7 +18,9 @@ const headerText = `
 
 document.querySelector('header').innerHTML = headerText;
 
-//Populate footer
+/*
+ * Populate footer
+ */
 const footerText = `
 <p class = "footerP textFont">Support: admin@metropolia.fi</p>
 <p class = "footerP textFont">Feedback: admin2@metropolia.fi</p>
