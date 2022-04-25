@@ -1,3 +1,4 @@
+
 article {
     height: 60vh;
     display: flex;
@@ -5,6 +6,8 @@ article {
     gap: 30px;
 
 }
+
+
 
 .left {
     display: flex;
@@ -18,7 +21,7 @@ article {
     flex: 1;
     margin: 10px;
 }
-
+/*
 .middle {
     display: flex;
     flex: 2;
@@ -27,8 +30,10 @@ article {
 
 .middle > h2 {
     align-self: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
+
+ */
 
 #moveOfDay {
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
@@ -44,6 +49,7 @@ article {
     height: auto;
 }
 
+/*
 .right {
     display: flex;
     flex-direction: column;
@@ -57,6 +63,8 @@ article {
     margin: 10px;
 }
 
+ */
+
 
 #divText {
     padding: 10px
@@ -64,6 +72,30 @@ article {
 #userNameText {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.middle {
+   display: flex;
+    flex: 4;
+    flex-direction: column;
+    background-color: var(--Blue);
+    border-style: solid;
+    border-color: var(--Red);
+    border-width: 2px;
+    margin: 10px;
+}
+
+.imgMotD {
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    flex: 3;
+}
+
+.MotDInfo {
+    flex: 2;
 }
 
 /*

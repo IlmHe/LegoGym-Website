@@ -37,8 +37,8 @@ const getGymMoveId = async (id, res) => {
  */
 const createGymMove = async (gymMove, res) => {
   try {
-    const [rows] = await promisePool.query(`INSERT INTO GymMoves(MoveName, Category, Likes, Comments) VALUES (?,?,?,?)`,
-        [gymMove.MoveName, gymMove.Category, gymMove.Likes, gymMove.Comments]);
+    const [rows] = await promisePool.query(`INSERT INTO GymMoves(MoveName, Category, MovePicture, Comments) VALUES (?,?,?,?)`,
+        [gymMove.MoveName, gymMove.Category, gymMove.MovePicture, gymMove.Comments]);
     console.log(`GymMove model insert`, rows, rows[0]);
     return rows.insertId;
   } catch (e) {
