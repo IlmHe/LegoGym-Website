@@ -35,8 +35,8 @@ const getPostbyId = async (id, res) => {
  */
 const createPost = async (post, res) => {
   try {
-    const [rows] = await promisePool.query(`INSERT INTO Posts(PostText, PostImage, Category, CreatedById, PostComment, PostLike) VALUES (?,?,?,?,?,?)`,
-        [post.PostText, post.PostImage, post.Category, post.CreatedById, post.PostComment, post.PostLike]);
+    const [rows] = await promisePool.query(`INSERT INTO Posts(PostText, PostImage, Category, CreatedById) VALUES (?,?,?,?)`,
+        [post.PostText, post.PostImage, post.Category, post.CreatedById]);
     console.log(`Post model insert`, rows, rows[0]);
     return rows.insertId;
   } catch (e) {
@@ -61,7 +61,6 @@ const deletePost = async (id, res) => {
   }
 };
 
-//Lisätty
 const getRecentPosts = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts ORDER BY PostId DESC LIMIT 2');
@@ -73,7 +72,6 @@ const getRecentPosts = async (res) => {
   }
 };
 
-//Lisätty
 const getPostsByCategory = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts WHERE Category = ?', [category]);
@@ -85,13 +83,24 @@ const getPostsByCategory = async (category, res) => {
   }
 };
 
-//Lisätty
 const getPostsCreatedByUser = async (userId, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts WHERE CreatedById = ?', [userId]);
     return rows;
   } catch (e) {
     console.error('Post model getPostsCreatedByUser error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+const postLiked = async (postId, res) => {
+  try {
+    const [rows] = await promisePool.query('UPDATE Posts SET PostLike = PostLike+1 WHERE PostId = ?', [postId]);
+    console.log(`PostModel liked a post`, rows,);
+    return rows.affectedRows === 1;
+  } catch (e) {
+    console.error('Post model postLiked error', e.message);
     res.status(500).json({message: "Something went wrong"});
     return;
   }
@@ -105,4 +114,5 @@ module.exports = {
   getRecentPosts,
   getPostsByCategory,
   getPostsCreatedByUser,
+  postLiked
 };

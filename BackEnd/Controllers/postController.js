@@ -52,25 +52,28 @@ const post_delete_by_id = async (req, res) => {
   res.json({message: `post deleted ${postDeleted}`});
 };
 
-//Lisätty
 const post_get_recent = async (req, res) => {
   console.log(`post controller get recent`);
   const posts = await postModel.getRecentPosts(res);
   res.json(posts);
 };
 
-//Lisätty
 const post_get_by_category = async (req, res) => {
   console.log(`post controller get by category`, req.params.category);
   const posts = await postModel.getPostsByCategory(req.params.category, res);
   res.json(posts);
 };
 
-//Lisätty
 const post_get_by_author = async (req, res) => {
   console.log(`post controller get by author`, req.params.author);
   const posts = await postModel.getPostsCreatedByUser(req.params.author, res);
   res.json(posts);
+};
+
+const post_update_likes = async (req, res) => {
+  console.log(`post controller update likes`, req.params.id);
+  const post = await postModel.postLiked(req.params.id, res);
+  res.json(post);
 };
 
 module.exports = {
@@ -80,5 +83,6 @@ module.exports = {
   post_delete_by_id,
   post_get_recent,
   post_get_by_category,
-  post_get_by_author
+  post_get_by_author,
+  post_update_likes,
 };

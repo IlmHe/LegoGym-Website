@@ -63,7 +63,6 @@ const deleteGymMove = async (id, res) => {
   }
 };
 
-//Lisätty
 const getGymMoveofTheDay = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves ORDER BY RAND() LIMIT 1');
@@ -75,7 +74,6 @@ const getGymMoveofTheDay = async (res) => {
   }
 };
 
-//Lisätty
 const getGymMovebyCategory = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves WHERE Category = ?', [category]);
@@ -87,11 +85,24 @@ const getGymMovebyCategory = async (category, res) => {
   }
 };
 
+const updateGymMoveLikes = async (id, res) => {
+  try {
+    const [rows] = await promisePool.query('UPDATE GymMoves SET Likes = Likes + 1 WHERE GymMoveId = ?', [id]);
+    console.log(`GymMove model updateGymMoveLikes`, rows,);
+    return rows.affectedRows === 1;
+  } catch (e) {
+    console.error('GymMove model updateGymMoveLikes error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllGymMoves,
   getGymMoveId,
   createGymMove,
   deleteGymMove,
   getGymMoveofTheDay,
-  getGymMovebyCategory
+  getGymMovebyCategory,
+  updateGymMoveLikes
 };
