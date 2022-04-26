@@ -36,13 +36,23 @@
     <!-- sisältö jossa linkkilista ja kuva -->
     <article>
 
-        <div class="left">
+        <div class="profileViewInfo">
         </div>
-        <div class="right">
+        <div class="makeANewPost">
         </div>
 
     </article>
 
+    <div>
+        <form action="http://localhost:3000/post" method="post" class="light-border" id="addPostForm">
+            <input class="light-border textFont" type="text" name="PostText" placeholder="PostText" required minlength="3">
+            <input class="light-border" type="file" name="post" accept="image/jpeg, imgage/gif, image.png" placeholder="Choose file" required >
+            <input class="light-border textFont" type="text" name="Category" placeholder="Category" required >
+            <input class="light-border textFont" type="text" name="CreatedById" placeholder="Creator" required >
+            <input class="light-border textFont" type="datetime-local" name="PostDate" placeholder="Postdate" required >
+            <button class="light-border textFont" type="submit">Save</button>
+        </form>
+    </div>
     <!-- alatunniste-->
     <footer>
         <!--
@@ -53,6 +63,7 @@
     </footer>
 
 </main>
+<script src="../js/serialize.js"></script>
 <script src="../js/sharedElements.js"></script>
 <script src="../js/profileView.js"></script>
 </body>
