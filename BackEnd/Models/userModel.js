@@ -36,8 +36,8 @@ const getUserId = async (id, res) => {
  */
 const createUser = async (User, res) => {
   try {
-    const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfilePic, ProfileText) VALUES (?,?,?,?,?)`,
-        [User.Username, User.Email, User.Password, User.ProfilePic, User.ProfileText]);
+    const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfileText, ProfilePic) VALUES (?,?,?,?,?)`,
+        [User.Username, User.Email, User.Password, User.ProfileText, User.ProfilePic,]);
     console.log(`User model insert`, rows, rows[0]);
     return rows.insertId;
   } catch (e) {
@@ -52,8 +52,8 @@ const createUser = async (User, res) => {
  */
 const updateUser = async (User, res) => {
   try {
-    const [rows] = await promisePool.query("UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfilePic = ?, ProfileText = ? WHERE UserId = ?",
-        [User.Username, User.Email, User.Password, User.ProfilePic, User.ProfileText]);
+    const [rows] = await promisePool.query("UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfileText = ?, ProfilePic = ? WHERE UserId = ?",
+        [User.Username, User.Email, User.Password, User.ProfileText, User.ProfilePic]);
     console.log(`User model update`, rows,);
     return rows.affectedRows === 1;
   } catch (e) {
@@ -78,10 +78,23 @@ const deleteUser = async (id, res) => {
   }
 };
 
+//TODO test if works
+const getProfilePic = async (id, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT FilePath FROM ProfilePics, Users WHERE ProfilePics.ProfilePicId = Users.ProfilePic', [id]);
+    return rows[0].ProfilePic;
+  } catch (e) {
+    console.error('User model getAllUsers error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserId,
   createUser,
   updateUser,
   deleteUser,
+  getProfilePic
 };

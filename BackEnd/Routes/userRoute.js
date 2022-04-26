@@ -43,4 +43,7 @@ router.route(`/:id`)
 .get(userController.user_get_by_id)
 .delete(userController.user_delete_by_id);
 
+router.route('/profilepic/:id')
+    .get(userController.user_get_profilepic);
+
 module.exports = router;

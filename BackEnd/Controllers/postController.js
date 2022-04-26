@@ -1,6 +1,7 @@
 'use strict';
 
 const postModel = require('../models/postModel');
+const { validationResult } = require('express-validator');
 
 /**
  * @description: This function is used to get all the posts
@@ -32,12 +33,37 @@ const post_get_by_id = async (req, res) => {
  * @param {object} res
  * @returns {object} post
  */
+//Create a new post with image file
+const post_post = async (req, res) => {
+  console.log(`post controller post body`, req.body);
+  if (!req.file) {
+    return res.status(400).json({message: ` post upload failed: file invalid`});
+  }
+  console.log(`post controller post file`, req.file);
+  //Stop if validation error
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log('validation errors', errors);
+    return res.status(400).json({message: ` post upload failed: validation error`, errors: errors});
+  }
+
+  const post = req.body;
+  post.filename = req.file.filename;
+  console.log('post uploaded', post);
+
+  const id = await postModel.createPost(post, res);
+  res.json({message: `post created with id: ${id}`});
+};
+/*
 const post_post = async (req, res) => {
   console.log(`post controller post body`, req.body);
   const post = req.body;
   const id = await postModel.createPost(post, res);
   res.json({message: `post created with id: ${id}`});
 };
+
+ */
 
 /**
  * @description: This function is used to update a post

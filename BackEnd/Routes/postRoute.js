@@ -1,8 +1,6 @@
 'use strict';
 const express = require(`express`);
-/*
 const multer = require('multer');
-*/
 const {body} = require('express-validator');
 const postController = require('../Controllers/postController');
 const router = express.Router();
@@ -10,10 +8,21 @@ const router = express.Router();
 /*
 * Post routes
  */
+const fileFilter = (req, file, cb) => {
+  const allowedMimetypes = ['image/jpeg', 'image/png'];
+  if (allowedMimetypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({dest: './uploads/', fileFilter});
 
 router.route(`/`)
 .get(postController.post_list_get)
-.post(postController.post_post);
+.post(upload.single('post'),
+    postController.post_post);
 
 
 router.route(`/:id`)

@@ -97,10 +97,18 @@ const user_delete_by_id = async (req, res) => {
   res.json({message: `user deleted ${userDeleted}`});
 };
 
+const user_get_profilepic = async (req, res) => {
+  console.log(`user controller get profile pic`, req.params.id);
+  const user = await userModel.getProfilePic(req.params.id, res);
+  console.log(`user get profile pic`, user);
+  res.json(user || {});
+};
+
 module.exports = {
   user_list_get,
   user_get_by_id,
   user_post,
   user_update,
-  user_delete_by_id
+  user_delete_by_id,
+  user_get_profilepic
 };

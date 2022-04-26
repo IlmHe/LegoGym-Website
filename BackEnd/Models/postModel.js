@@ -35,6 +35,20 @@ const getPostbyId = async (id, res) => {
  */
 const createPost = async (post, res) => {
   try {
+    const [rows] = await promisePool.query(`INSERT INTO Posts(PostId, PostText, PostImage, Category, CreatedById, PostComment, PostLike, PostDate) VALUES  (?,?,?,?,?,?,?,?)`,
+        [null, post.PostText, post.filename, post.Category, post.CreatedById, null, 1, post.PostDate]);
+     //   [post.PostText, post.PostImage, post.Category, post.CreatedById]);
+    console.log(`Post model insert`, rows, rows[0]);
+    return rows.insertId;
+  } catch (e) {
+    console.error('Post model createPost error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+/*
+const createPost = async (post, res) => {
+  try {
     const [rows] = await promisePool.query(`INSERT INTO Posts(PostText, PostImage, Category, CreatedById) VALUES (?,?,?,?)`,
         [post.PostText, post.PostImage, post.Category, post.CreatedById]);
     console.log(`Post model insert`, rows, rows[0]);
@@ -45,6 +59,8 @@ const createPost = async (post, res) => {
     return;
   }
 };
+
+ */
 
 /**
  * Deletes a post from the database, else returns an error
