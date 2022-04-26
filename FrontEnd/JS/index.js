@@ -41,7 +41,10 @@ const createPostCards = (posts) => {
   posts.forEach((post) => {
     // create li with DOM methods
     const img = document.createElement('img');
-    img.src = url + '/' + post.filename;
+    img.src = url + '/' + post.PostImage;
+    //TODO change later
+    img.width = 160;
+    img.height = 160;
     //img.alt = post.name;
     img.alt = `Image of a post created by: ${post.CreatedById}`;
     img.classList.add('resp');

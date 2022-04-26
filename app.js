@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing appliuserion/x-w
 //app.use('/gymMove/category', gymMoveRoute);
 //Lisätty
 //app.use('/gymMove/moveoftheday', gymMoveRoute);
+app.use(express.static('uploads'))
 app.use('/gymMove', gymMoveRoute);
 app.use('/user', userRoute);
 app.use('/post', postRoute);
