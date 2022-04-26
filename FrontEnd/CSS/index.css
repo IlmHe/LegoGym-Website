@@ -8,7 +8,6 @@ article {
 }
 
 
-
 .left {
     display: flex;
     flex-direction: column;
@@ -21,6 +20,7 @@ article {
     flex: 1;
     margin: 10px;
 }
+
 /*
 .middle {
     display: flex;
@@ -69,33 +69,52 @@ article {
 #divText {
     padding: 10px
 }
+
 #userNameText {
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .middle {
-   display: flex;
+    display: flex;
     flex: 4;
     flex-direction: column;
-    background-color: var(--Blue);
+    background-color: var(--lightRed);
     border-style: solid;
     border-color: var(--Red);
     border-width: 2px;
     margin: 10px;
+    align-items: center;
+}
+
+.MotD {
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .imgMotD {
-    background: no-repeat center center fixed;
+    background: no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: contain;
-    flex: 3;
+    width: 600px;
+    height: calc(100% - 200px);
+    clip-path: circle(50% at 50% 50%);
+
+}
+
+p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    word-break: break-all;
+    margin: 0;
+    padding: 5px;
 }
 
 .MotDInfo {
-    flex: 2;
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
 }
 
 /*

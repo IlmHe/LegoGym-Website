@@ -107,7 +107,8 @@ const createMoveOfTheDayCard = (move) => {
 
   const img = document.createElement('background-image');
   //TODO: change filepath later
-  img.style.backgroundImage = "url('../Images/SitePictures/LegoBobaProPic.jpg') ";
+  img.style.backgroundImage = "url('../Images/SitePictures/LegoMilleniumFalcon.jpg') ";
+
   img.alt = `Image of the gym move of the day: ${move.MoveName}`;
   img.classList.add('resp');
 
