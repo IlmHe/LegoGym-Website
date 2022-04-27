@@ -90,11 +90,23 @@ const getProfilePic = async (id, res) => {
   }
 };
 
+const getUserLogin = async (email, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM `Users` WHERE `Email` = ?', [email]);
+    console.log(rows[0])
+    return rows[0];
+  } catch (e) {
+    console.error('getUserLogin err', e.message);
+    return;
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserId,
   createUser,
   updateUser,
   deleteUser,
-  getProfilePic
+  getProfilePic,
+  getUserLogin,
 };
