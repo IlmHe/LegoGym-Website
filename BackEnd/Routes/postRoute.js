@@ -24,7 +24,6 @@ router.route(`/`)
 .post(upload.single('post'),
     postController.post_post);
 
-
 router.route(`/:id`)
 .get(postController.post_get_by_id)
 .delete(postController.post_delete_by_id)
@@ -40,5 +39,11 @@ router.route('/recent/:recent')
 
 router.route('/like/:id')
     .put(postController.post_update_likes);
+
+router.route('/categoryname/:id')
+    .get(postController.post_get_category_name);
+
+router.route('/creatorname/:id')
+    .get(postController.post_get_creator_name);
 
 module.exports = router;

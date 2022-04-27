@@ -122,6 +122,28 @@ const postLiked = async (postId, res) => {
   }
 };
 
+const getPostsByCategoryName = async (category, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT CategoryName FROM Category RIGHT JOIN Posts ON Category.CategoryId = Posts.Category WHERE Posts.PostId = ?', [category]);
+    return rows;
+  } catch (e) {
+    console.error('Post model getPostsCategoryName error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
+const getPostsCreatorName = async (userId, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT UserName FROM Users RIGHT JOIN Posts ON Users.UserId = Posts.CreatedById WHERE Posts.PostId = ?', [userId]);
+    return rows;
+  } catch (e) {
+    console.error('Post model getPostsCreatorName error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllPosts,
   getPostbyId,
@@ -130,5 +152,7 @@ module.exports = {
   getRecentPosts,
   getPostsByCategory,
   getPostsCreatedByUser,
-  postLiked
+  postLiked,
+  getPostsByCategoryName,
+  getPostsCreatorName,
 };
