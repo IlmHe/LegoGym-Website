@@ -56,24 +56,57 @@ const createPostCards = (posts) => {
     h2.innerHTML = post.name;
 
      */
+    const li = document.createElement('li');
 
     const p1 = document.createElement('p');
     p1.innerHTML = `PostText: ${post.PostText}`;
 
+    const getPostCatAndUser = async () => {
+      try {
+        const fetchOptions = {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        };
+
+        const responseCategory = await fetch(url + '/post/categoryname/'+ post.PostId, fetchOptions);
+        const category = await responseCategory.json();
+        const responseUser = await fetch(url + '/post/creatorname/' + post.PostId, fetchOptions);
+        const user = await responseUser.json();
+        postCatAndUser(category, user);
+        console.log(category);
+      } catch (e) {
+        console.log(e.message);
+      }
+
+    }
+    getPostCatAndUser();
+    const postCatAndUser =  (category, user) => {
+      const p2 = document.createElement('p');
+      p2.innerHTML = `Post category: ${category.CategoryName}`;
+
+      const p3 = document.createElement('p');
+      p3.innerHTML = `Posted by: ${user.UserName}`;
+
+      li.appendChild(p2);
+      li.appendChild(p3);
+    }
+
+    /*
     const p2 = document.createElement('p');
     p2.innerHTML = `PostCategory: ${post.Category}`;
 
     const p3 = document.createElement('p');
     p3.innerHTML = `Posted by: ${post.CreatedById}`;
 
-    const li = document.createElement('li');
+     */
+
+
     //li.classList.add('light-border');
 
    // li.appendChild(h2);
     li.appendChild(figure);
     li.appendChild(p1);
-    li.appendChild(p2);
-    li.appendChild(p3);
     ul.appendChild(li);
   });
 
@@ -125,9 +158,38 @@ const createMoveOfTheDayCard = (move) => {
   p1.innerHTML = `MoveName: ${move.MoveName}`;
   divMotD.appendChild(p1);
 
+  const getMoveCategoryName = async () => {
+    try {
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+
+      const responseCategory = await fetch(url + '/gymMove/categoryname/'+ move.GymMoveId, fetchOptions);
+      const category = await responseCategory.json();
+      moveCategory(category);
+      console.log(category);
+    } catch (e) {
+      console.log(e.message);
+    }
+
+  }
+  getMoveCategoryName();
+  const moveCategory =  (category) => {
+    const p2 = document.createElement('p');
+    p2.innerHTML = `Move category: ${category.CategoryName}`;
+    divMotD.appendChild(p2);
+
+
+  }
+
+  /*
   const p2 = document.createElement('p');
   p2.innerHTML = `MoveCategory: ${move.Category}`;
   divMotD.appendChild(p2);
+
+   */
 
   const p3 = document.createElement('p');
   p3.innerHTML = `Likes: ${move.Likes}`;
