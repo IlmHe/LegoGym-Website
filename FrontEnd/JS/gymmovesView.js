@@ -4,7 +4,26 @@ const url = 'http://localhost:3000';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
-const createScrollableGymMoveCard = (moves) => {
+const createScrollableGymMoveCard = (moves, category, updateLike) => {
+
+  /*
+  const getGymMoveCategoryName = async () => {
+    try {
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+      const responseCategory = await fetch(url + '/gymMove/categoryname/'+moves.Category, fetchOptions);
+      const category = await responseCategory.json();
+      createScrollableGymMoveCard(category);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+  getGymMoveCategoryName();
+
+   */
 
   viewScrollAllGymMoves.innerHTML = '';
 
@@ -15,6 +34,7 @@ const createScrollableGymMoveCard = (moves) => {
   viewScrollAllGymMoves.appendChild(h2);
 
   moves.forEach((move) => {
+
     // create li with DOM methods
     const img = document.createElement('img');
     img.src = move.MovePicture;
@@ -25,7 +45,6 @@ const createScrollableGymMoveCard = (moves) => {
 
     const figure = document.createElement('figure').appendChild(img);
 
-
     const divAllMoves = document.createElement('div');
     divAllMoves.classList.add('allMoves');
 
@@ -34,18 +53,32 @@ const createScrollableGymMoveCard = (moves) => {
     divAllMoves.appendChild(p1);
 
     const p2 = document.createElement('p');
-    p2.innerHTML = `Move category: ${move.Category}`;
+    p2.innerHTML = `Move category: ${category.CategoryName}`;
     divAllMoves.appendChild(p2);
 
     const p3 = document.createElement('p');
     p3.innerHTML = `Likes: ${move.Likes}`;
     divAllMoves.appendChild(p3);
 
+    /*
+    const likeButton = document.createElement('button');
+    likeButton.innerText = 'Like';
+    likeButton.classList.add('likeButton');
+    likeButton.addEventListener('click', () => {
+      updateLike(move.MoveId);
+    });
+
+
+     */
+
     const divElement = document.createElement('div');
     divElement.classList.add('moveCardDiv');
 
+
+
     divElement.appendChild(figure);
     divElement.appendChild(divAllMoves);
+    //divElement.appendChild(likeButton);
     viewScrollAllGymMoves.appendChild(divElement);
 
   });
@@ -58,12 +91,35 @@ const viewAllMoves = async () => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/gymMove/', fetchOptions);
-    const moves = await response.json();
-    createScrollableGymMoveCard(moves);
+    const responseMoves = await fetch(url + '/gymMove/', fetchOptions);
+    const moves = await responseMoves.json();
+    const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);
+    const category = await responseCategory.json();
+    //const responseUpdateLike = await fetch(url + '/gymMove/like/'+7, fetchOptions);
+    //const updateLike = await responseUpdateLike.json();
+    createScrollableGymMoveCard(moves, category);
   } catch (e) {
     console.log(e.message);
   }
 
 }
 viewAllMoves();
+
+/*
+const getGymMoveCategoryName = async () => {
+  try {
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + 'gymMove/categoryname/', fetchOptions);
+    const category = await response.json();
+    createScrollableGymMoveCard(category);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+getGymMoveCategoryName();
+
+ */
