@@ -73,6 +73,13 @@ const gymMove_update_Likes = async (req, res) => {
   res.json(gymMove || {});
 };
 
+const gymMove_get_category_name = async (req, res) => {
+  console.log(`gymMove controller get category name`, req.params.id);
+  const gymMove = await gymMoveModel.getGymMoveCategoryName(req.params.id, res);
+  console.log(`gymMove get category name`, gymMove);
+  res.json(gymMove || {});
+};
+
 module.exports = {
   gymMove_list_get,
   gymMove_get_by_id,
@@ -81,4 +88,5 @@ module.exports = {
   gymMove_get_moveoftheDay,
   gymMove_get_By_category,
   gymMove_update_Likes,
+  gymMove_get_category_name
 };

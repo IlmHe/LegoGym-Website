@@ -102,6 +102,18 @@ const post_update_likes = async (req, res) => {
   res.json(post);
 };
 
+const post_get_category_name = async (req, res) => {
+  console.log(`post controller get category name`, req.params.id);
+  const posts = await postModel.getPostsByCategoryName(req.params.id, res);
+  res.json(posts);
+};
+
+const post_get_creator_name = async (req, res) => {
+  console.log(`post controller get creator name`, req.params.id);
+  const posts = await postModel.getPostsCreatorName(req.params.id, res);
+  res.json(posts);
+};
+
 module.exports = {
   post_list_get,
   post_get_by_id,
@@ -111,4 +123,6 @@ module.exports = {
   post_get_by_category,
   post_get_by_author,
   post_update_likes,
+  post_get_category_name,
+  post_get_creator_name
 };

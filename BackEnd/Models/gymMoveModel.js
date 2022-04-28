@@ -97,6 +97,17 @@ const updateGymMoveLikes = async (id, res) => {
   }
 };
 
+const getGymMoveCategoryName = async (category, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT CategoryName FROM Category RIGHT JOIN GymMoves ON Category.CategoryId = GymMoves.Category WHERE GymMoves.GymMoveId = ?', [category]);
+    return rows[0];
+  } catch (e) {
+    console.error('GymMove model getGymMoveCategoryName error', e.message);
+    res.status(500).json({message: "Something went wrong"});
+    return;
+  }
+};
+
 module.exports = {
   getAllGymMoves,
   getGymMoveId,
@@ -104,5 +115,6 @@ module.exports = {
   deleteGymMove,
   getGymMoveofTheDay,
   getGymMovebyCategory,
-  updateGymMoveLikes
+  updateGymMoveLikes,
+  getGymMoveCategoryName
 };

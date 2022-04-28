@@ -30,15 +30,15 @@ const createScrollableGymMoveCard = (moves) => {
     divAllMoves.classList.add('allMoves');
 
     const p1 = document.createElement('p');
-    p1.innerHTML = `Name of th move: ${move.MoveName}`;
+    p1.innerHTML = `Name of the move: ${move.MoveName}`;
     divAllMoves.appendChild(p1);
 
     const p2 = document.createElement('p');
-    p2.innerHTML = `PostCategory: ${move.Category}`;
+    p2.innerHTML = `Move category: ${move.Category}`;
     divAllMoves.appendChild(p2);
 
     const p3 = document.createElement('p');
-    p3.innerHTML = `Posted by: ${move.Likes}`;
+    p3.innerHTML = `Likes: ${move.Likes}`;
     divAllMoves.appendChild(p3);
 
     const divElement = document.createElement('div');

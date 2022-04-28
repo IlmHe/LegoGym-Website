@@ -11,7 +11,7 @@ const getAllUsers = async (res) => {
     return rows;
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
-    res.status(500).json({message: 'Something went wrong'});
+    res.status(500).json({ message: "Something went wrong"});
     return;
   }
 };
@@ -93,10 +93,8 @@ const deleteUser = async (id, res) => {
 //TODO test if works
 const getProfilePic = async (id, res) => {
   try {
-    const [rows] = await promisePool.query(
-        'SELECT FilePath FROM ProfilePics, Users WHERE ProfilePics.ProfilePicId = Users.ProfilePic',
-        [id]);
-    return rows[0].ProfilePic;
+    const [rows] = await promisePool.query('SELECT FilePath FROM ProfilePics RIGHT JOIN Users ON ProfilePics.ProfilePicId = Users.ProfilePic WHERE Users.UserId = ?', [id]);
+    return rows[0];
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
     res.status(500).json({message: 'Something went wrong'});

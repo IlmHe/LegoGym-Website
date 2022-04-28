@@ -4,18 +4,9 @@ const url = 'http://localhost:3000';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
 
-/*
+
 const profilePicCard = (profilePic) => {
   viewProfileInfo.innerHTML = '';
-
-
-
-}
-
- */
-
-const createProfileInfoCard = (user) => {
-    viewProfileInfo.innerHTML = '';
 
   const h2 = document.createElement('h2');
   h2.classList.add('headingFont');
@@ -23,7 +14,7 @@ const createProfileInfoCard = (user) => {
   viewProfileInfo.appendChild(h2);
 
   const img = document.createElement('img');
-  img.src = url + '/' ;//+ profilePic.FilePath;
+  img.src =  profilePic.FilePath;
   img.width = 160;
   img.height = 160;
   img.alt = `Image of users profile picture`;
@@ -31,6 +22,15 @@ const createProfileInfoCard = (user) => {
 
   const figure = document.createElement('figure').appendChild(img);
   viewProfileInfo.appendChild(figure);
+
+}
+
+
+
+const createProfileInfoCard = (user) => {
+    viewProfileInfo.innerHTML += '';
+
+
 
     const divProfileDetail = document.createElement('div');
     divProfileDetail.classList.add('divProfileDetail');
@@ -93,7 +93,7 @@ const getProfilePic = async () => {
     console.log(e.message);
   }
 }
-//getProfilePic()
+getProfilePic()
 
 
 const addPostForm = document.querySelector('#addPostForm');

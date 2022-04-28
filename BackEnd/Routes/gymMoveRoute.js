@@ -27,4 +27,7 @@ router.route('/moveoftheday/:moveoftheday')
 
 router.route('/like/:id')
     .put(gymMoveController.gymMove_update_Likes);
+
+router.route('/categoryname/:id')
+    .get(gymMoveController.gymMove_get_category_name);
 module.exports = router;
