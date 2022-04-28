@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+const url = 'https://10.114.32.55/index/'; // change url when uploading to server
 
 const addUserForm = document.querySelector('#addUserForm');
 

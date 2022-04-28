@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://localhost:3000';
+const url = 'https://10.114.32.55/index/';
 /*
  *Populate right div
  */
