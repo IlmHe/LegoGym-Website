@@ -60,7 +60,7 @@ const createScrollableGymMoveCard = (moves, category, updateLike) => {
     p3.innerHTML = `Likes: ${move.Likes}`;
     divAllMoves.appendChild(p3);
 
-    /*
+    //TODO fix button
     const likeButton = document.createElement('button');
     likeButton.innerText = 'Like';
     likeButton.classList.add('likeButton');
@@ -69,7 +69,7 @@ const createScrollableGymMoveCard = (moves, category, updateLike) => {
     });
 
 
-     */
+
 
     const divElement = document.createElement('div');
     divElement.classList.add('moveCardDiv');
@@ -78,7 +78,7 @@ const createScrollableGymMoveCard = (moves, category, updateLike) => {
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllMoves);
-    //divElement.appendChild(likeButton);
+    divElement.appendChild(likeButton);
     viewScrollAllGymMoves.appendChild(divElement);
 
   });
