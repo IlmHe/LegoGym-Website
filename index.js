@@ -11,6 +11,17 @@ const session = require("express-session");
 const index = express();
 const port = process.env.PORT || 3000;
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (process.env.NODE_ENV === 'production') {
+  require('./utils/production')(app, port);
+} else {
+  require('./utils/localhost')(app, port);
+}
+app.get('/', (req, res) => {
+  res.send('Hello Secure World!');
+});
+
+
 /*const loggedIn = (req, res, next) => {
   if (req.user) {
     next();
