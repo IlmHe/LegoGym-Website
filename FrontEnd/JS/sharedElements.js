@@ -13,7 +13,7 @@ const headerText = `
 </nav>
 <p class="profileNav"><a id="profileLink" href="profileView.html"> LegoLover123</a> <img class="profilePic" width="40px" height="50px" src="../Images/ProfilePics/LegoChewbaccaProPic.jpg"> </p>
 
-<button class="headingFont" onclick="location.href='loginView.html'">Login</button>
+<button class="headingFont" onclick="location.href='registerView.html'">Login</button>
 `;
 
 document.querySelector('header').innerHTML = headerText;

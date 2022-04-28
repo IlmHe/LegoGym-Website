@@ -104,11 +104,20 @@ const user_get_profilepic = async (req, res) => {
   res.json(user || {});
 };
 
+const checkToken = (req, res, next) => {
+  if (!req.user) {
+    next(new Error('token not valid'));
+  } else {
+    res.json({ user: req.user });
+  }
+};
+
 module.exports = {
   user_list_get,
   user_get_by_id,
   user_post,
   user_update,
   user_delete_by_id,
-  user_get_profilepic
+  user_get_profilepic,
+  checkToken,
 };
