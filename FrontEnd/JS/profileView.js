@@ -4,33 +4,43 @@ const url = 'http://localhost:3000';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
 
-
-const profilePicCard = (profilePic) => {
-  viewProfileInfo.innerHTML = '';
+const createProfileInfoCard = (user) => {
+    viewProfileInfo.innerHTML = '';
 
   const h2 = document.createElement('h2');
   h2.classList.add('headingFont');
   h2.innerText = 'User details';
   viewProfileInfo.appendChild(h2);
 
-  const img = document.createElement('img');
-  img.src =  profilePic.FilePath;
-  img.width = 160;
-  img.height = 160;
-  img.alt = `Image of users profile picture`;
-  img.classList.add('resp');
+  const getProfilePic = async () => {
+    try {
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+      const response = await fetch(url + '/user/profilepic/'+ user.UserId, fetchOptions);
+      const profilePic = await response.json();
+      console.log(profilePic);
+      profilePicCard(profilePic);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+  getProfilePic()
 
-  const figure = document.createElement('figure').appendChild(img);
-  viewProfileInfo.appendChild(figure);
+  const profilePicCard = (profilePic) => {
 
-}
+    const img = document.createElement('img');
+    img.src =  profilePic.FilePath;
+    img.width = 160;
+    img.height = 160;
+    img.alt = `Image of users profile picture`;
+    img.classList.add('resp');
 
-
-
-const createProfileInfoCard = (user) => {
-    viewProfileInfo.innerHTML += '';
-
-
+    const figure = document.createElement('figure').appendChild(img);
+    viewProfileInfo.appendChild(figure);
+  }
 
     const divProfileDetail = document.createElement('div');
     divProfileDetail.classList.add('divProfileDetail');
@@ -69,7 +79,7 @@ const viewProfileDetail = async () => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/user/1', fetchOptions);
+    const response = await fetch(url + '/user/2', fetchOptions);
     const user = await response.json();
     createProfileInfoCard(user);
   } catch (e) {
@@ -78,26 +88,7 @@ const viewProfileDetail = async () => {
 }
 viewProfileDetail()
 
-const getProfilePic = async () => {
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/user/profilepic/1', fetchOptions);
-    const profilePic = await response.json();
-    console.log(profilePic);
-    profilePicCard(profilePic);
-  } catch (e) {
-    console.log(e.message);
-  }
-}
-getProfilePic()
-
-
 const addPostForm = document.querySelector('#addPostForm');
-
 
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();

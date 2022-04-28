@@ -4,7 +4,7 @@ const url = 'http://localhost:3000';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
-const createScrollableGymMoveCard = (moves, category, updateLike) => {
+const createScrollableGymMoveCard = (moves) => {
 
   /*
   const getGymMoveCategoryName = async () => {
@@ -52,9 +52,30 @@ const createScrollableGymMoveCard = (moves, category, updateLike) => {
     p1.innerHTML = `Name of the move: ${move.MoveName}`;
     divAllMoves.appendChild(p1);
 
-    const p2 = document.createElement('p');
-    p2.innerHTML = `Move category: ${category.CategoryName}`;
-    divAllMoves.appendChild(p2);
+    const getMoveCategory = async () => {
+      try {
+        const fetchOptions = {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        };
+
+        const responseCategory = await fetch(url + '/gymMove/categoryname/'+ move.GymMoveId, fetchOptions);
+        const category = await responseCategory.json();
+        moveCategory(category);
+        console.log(category);
+      } catch (e) {
+        console.log(e.message);
+      }
+
+    }
+    getMoveCategory();
+    const moveCategory =  (category) => {
+      const p2 = document.createElement('p');
+      p2.innerHTML = `Move category: ${category.CategoryName}`;
+      divAllMoves.appendChild(p2);
+
+    }
 
     const p3 = document.createElement('p');
     p3.innerHTML = `Likes: ${move.Likes}`;
@@ -64,12 +85,23 @@ const createScrollableGymMoveCard = (moves, category, updateLike) => {
     const likeButton = document.createElement('button');
     likeButton.innerText = 'Like';
     likeButton.classList.add('likeButton');
-    likeButton.addEventListener('click', () => {
-      updateLike(move.MoveId);
+    likeButton.addEventListener('click', async (evt) => {
+      evt.preventDefault();
+      try {
+        const fetchOptions = {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        };
+        const response = await fetch(url + '/gymMove/like/' + move.GymMoveId, fetchOptions);
+        const updatedMove = await response.json();
+        return updatedMove;
+      } catch (e) {
+        console.log(e.message);
+      }
     });
-
-
-
 
     const divElement = document.createElement('div');
     divElement.classList.add('moveCardDiv');
@@ -93,11 +125,11 @@ const viewAllMoves = async () => {
     };
     const responseMoves = await fetch(url + '/gymMove/', fetchOptions);
     const moves = await responseMoves.json();
-    const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);
-    const category = await responseCategory.json();
-    //const responseUpdateLike = await fetch(url + '/gymMove/like/'+7, fetchOptions);
-    //const updateLike = await responseUpdateLike.json();
-    createScrollableGymMoveCard(moves, category);
+   // const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);
+   // const category = await responseCategory.json();
+   // const responseUpdateLike = await fetch(url + '/gymMove/like/'+7, fetchOptions);
+   // const updateLike = await responseUpdateLike.json();
+    createScrollableGymMoveCard(moves);
   } catch (e) {
     console.log(e.message);
   }
