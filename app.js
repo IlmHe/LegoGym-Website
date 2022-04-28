@@ -11,7 +11,7 @@ const session = require("express-session");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const loggedIn = (req, res, next) => {
+/*const loggedIn = (req, res, next) => {
   if (req.user) {
     next();
   } else {
@@ -20,7 +20,7 @@ const loggedIn = (req, res, next) => {
 };
 
 app.set('views', './FrontEnd/Views');
-app.set('view engine', 'pug');
+app.set('view engine', 'pug');*/
 
 app.use(session({secret: "ojoeaogjeojoaevajvavea"}));
 app.use(passport.initialize());
@@ -38,8 +38,8 @@ app.use(passport.initialize());
 app.use(express.static('uploads'));
 app.use('/auth', authRoute);
 app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
-app.use('/user',  passport.authenticate('jwt', {session: false}), userRoute);
-app.use('/post',  passport.authenticate('jwt', {session: false}), postRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
 /*app.post('/login',
     passport.authenticate('local', {failureRedirect: '/form'}),
@@ -62,13 +62,13 @@ app.get('/secret/logout', function (req, res) {
 });*/
 
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   if (req.secure) {
     res.send('Hello Secure World!');
   } else {
     res.send('./FrontEnd/HTML/index.html');
   }
-});
+});*/
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

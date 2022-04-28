@@ -46,4 +46,7 @@ router.route(`/:id`)
 router.route('/profilepic/:id')
     .get(userController.user_get_profilepic);
 
+router.get('/token', userController.checkToken);
+
+
 module.exports = router;

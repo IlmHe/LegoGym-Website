@@ -1,4 +1,3 @@
-
 'use strict';
 const pool = require('../Database/db');
 const promisePool = pool.promise();
@@ -12,7 +11,7 @@ const getAllUsers = async (res) => {
     return rows;
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
-    res.status(500).json({ message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
@@ -22,11 +21,12 @@ const getAllUsers = async (res) => {
  */
 const getUserId = async (id, res) => {
   try {
-    const [rows] = await promisePool.query('SELECT * FROM Users WHERE UserId = ?', [id]);
+    const [rows] = await promisePool.query(
+        'SELECT * FROM Users WHERE UserId = ?', [id]);
     return rows[0];
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
@@ -37,12 +37,17 @@ const getUserId = async (id, res) => {
 const createUser = async (User, res) => {
   try {
     const [rows] = await promisePool.query(`INSERT INTO Users(Username, Email, Password, ProfileText, ProfilePic) VALUES (?,?,?,?,?)`,
-        [User.Username, User.Email, User.Password, User.ProfileText, User.ProfilePic,]);
+        [
+          User.Username,
+          User.Email,
+          User.Password,
+          User.ProfileText,
+          User.ProfilePic]);
     console.log(`User model insert`, rows, rows[0]);
     return rows.insertId;
   } catch (e) {
     console.error('User model createUser error', e.message);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
@@ -52,13 +57,19 @@ const createUser = async (User, res) => {
  */
 const updateUser = async (User, res) => {
   try {
-    const [rows] = await promisePool.query("UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfileText = ?, ProfilePic = ? WHERE UserId = ?",
-        [User.Username, User.Email, User.Password, User.ProfileText, User.ProfilePic]);
-    console.log(`User model update`, rows,);
+    const [rows] = await promisePool.query(
+        'UPDATE `Users` SET Username = ?, Email = ?, Password = ?, ProfileText = ?, ProfilePic = ? WHERE UserId = ?',
+        [
+          User.Username,
+          User.Email,
+          User.Password,
+          User.ProfileText,
+          User.ProfilePic]);
+    console.log(`User model update`, rows);
     return rows.affectedRows === 1;
   } catch (e) {
     console.error('User model update error', e.message);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
@@ -68,12 +79,13 @@ const updateUser = async (User, res) => {
  */
 const deleteUser = async (id, res) => {
   try {
-    const [rows] = await promisePool.query('DELETE FROM Users WHERE UserId = ?', [id]);
-    console.log(`User model delete`, rows,);
+    const [rows] = await promisePool.query('DELETE FROM Users WHERE UserId = ?',
+        [id]);
+    console.log(`User model delete`, rows);
     return rows.affectedRows === 1;
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
@@ -81,23 +93,26 @@ const deleteUser = async (id, res) => {
 //TODO test if works
 const getProfilePic = async (id, res) => {
   try {
-    const [rows] = await promisePool.query('SELECT FilePath FROM ProfilePics, Users WHERE ProfilePics.ProfilePicId = Users.ProfilePic', [id]);
+    const [rows] = await promisePool.query(
+        'SELECT FilePath FROM ProfilePics, Users WHERE ProfilePics.ProfilePicId = Users.ProfilePic',
+        [id]);
     return rows[0].ProfilePic;
   } catch (e) {
     console.error('User model getAllUsers error', e.message);
-    res.status(500).json({message: "Something went wrong"});
+    res.status(500).json({message: 'Something went wrong'});
     return;
   }
 };
 
-const getUserLogin = async (email, res) => {
+const getUserLogin = async (params) => {
   try {
-    const [rows] = await promisePool.query('SELECT * FROM `Users` WHERE `Email` = ?', [email]);
-    console.log(rows[0])
-    return rows[0];
+    console.log("params: ",params);
+    const [rows] = await promisePool.execute(
+        'SELECT * FROM Users WHERE email = ?;',
+        params);
+    return rows;
   } catch (e) {
-    console.error('getUserLogin err', e.message);
-    return;
+    console.log('error', e.message);
   }
 };
 
