@@ -14,11 +14,8 @@ article {
     justify-content: flex-start;
     align-items: center;
     background-color: var(--lightYellow);
-    border-style: solid;
-    border-color: var(--Yellow);
-    border-width: 2px;
+    border-right: 2px solid rgb(0, 0, 0);
     flex: 1;
-    margin: 10px;
 }
 
 /*
@@ -79,11 +76,6 @@ article {
     display: flex;
     flex: 4;
     flex-direction: column;
-    background-color: var(--lightRed);
-    border-style: solid;
-    border-color: var(--Red);
-    border-width: 2px;
-    margin: 10px;
     align-items: center;
 }
 
@@ -115,6 +107,10 @@ p {
     display: flex;
     align-items: center;
     flex-flow: column wrap;
+}
+.left li {
+    list-style-type: none;
+    padding: 5px;
 }
 
 /*
