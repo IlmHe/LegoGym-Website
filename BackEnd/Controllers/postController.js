@@ -105,13 +105,15 @@ const post_update_likes = async (req, res) => {
 const post_get_category_name = async (req, res) => {
   console.log(`post controller get category name`, req.params.id);
   const posts = await postModel.getPostsByCategoryName(req.params.id, res);
-  res.json(posts);
+  console.log(`post get category name`, posts);
+  res.json(posts || {});
 };
 
 const post_get_creator_name = async (req, res) => {
   console.log(`post controller get creator name`, req.params.id);
   const posts = await postModel.getPostsCreatorName(req.params.id, res);
-  res.json(posts);
+  console.log(`post get creator name`, posts);
+  res.json(posts || {});;
 };
 
 module.exports = {

@@ -34,6 +34,38 @@ const createScrollablePostCard = (posts) => {
     p1.innerHTML = `PostText: ${post.PostText}`;
     divAllPosts.appendChild(p1);
 
+
+    const getPostCatAndUser = async () => {
+      try {
+        const fetchOptions = {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        };
+
+        const responseCategory = await fetch(url + '/post/categoryname/'+ post.PostId, fetchOptions);
+        const category = await responseCategory.json();
+        const responseUser = await fetch(url + '/post/creatorname/' + post.PostId, fetchOptions);
+        const user = await responseUser.json();
+        postCatAndUser(category, user);
+        console.log(category);
+      } catch (e) {
+        console.log(e.message);
+      }
+
+    }
+    getPostCatAndUser();
+    const postCatAndUser =  (category, user) => {
+      const p2 = document.createElement('p');
+      p2.innerHTML = `Post category: ${category.CategoryName}`;
+      divAllPosts.appendChild(p2);
+
+      const p3 = document.createElement('p');
+      p3.innerHTML = `Post creator: ${user.UserName}`;
+      divAllPosts.appendChild(p3);
+    }
+
+    /*
     const p2 = document.createElement('p');
     p2.innerHTML = `PostCategory: ${post.Category}`;
     divAllPosts.appendChild(p2);
@@ -41,7 +73,7 @@ const createScrollablePostCard = (posts) => {
     const p3 = document.createElement('p');
     p3.innerHTML = `Posted by: ${post.CreatedById}`;
     divAllPosts.appendChild(p3);
-
+     */
     const divElement = document.createElement('div');
     divElement.classList.add('postCardDiv');
 

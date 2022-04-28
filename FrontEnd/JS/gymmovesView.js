@@ -52,7 +52,7 @@ const createScrollableGymMoveCard = (moves) => {
     p1.innerHTML = `Name of the move: ${move.MoveName}`;
     divAllMoves.appendChild(p1);
 
-    const getMoveCategory = async () => {
+    const getMoveCategoryName = async () => {
       try {
         const fetchOptions = {
           headers: {
@@ -69,7 +69,7 @@ const createScrollableGymMoveCard = (moves) => {
       }
 
     }
-    getMoveCategory();
+    getMoveCategoryName();
     const moveCategory =  (category) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Move category: ${category.CategoryName}`;
