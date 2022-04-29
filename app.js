@@ -14,7 +14,7 @@ const port = process.env.PORT || 8000;
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-  require('./BAckEnd/utils/production')(app, port);
+  require('./BackEnd/utils/production')(app, port);
 } else {
   require('./BackEnd/utils/localhost')(app, port);
 }
