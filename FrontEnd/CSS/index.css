@@ -1,6 +1,6 @@
 
-article {
-    height: 60vh;
+.articleWrapper {
+    height: 80vh;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -16,6 +16,7 @@ article {
     background-color: var(--lightYellow);
     border-right: 2px solid rgb(0, 0, 0);
     flex: 1;
+    min-width: 200px;
 }
 
 /*
@@ -77,11 +78,15 @@ article {
     flex: 4;
     flex-direction: column;
     align-items: center;
+    min-width: 200px;
 }
 
 .MotD {
     display: flex;
     flex-flow: column wrap;
+}
+main {
+    height: 100%;
 }
 
 .imgMotD {
@@ -90,8 +95,10 @@ article {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: contain;
-    width: 600px;
-    height: calc(100% - 200px);
+    width: 30vw;
+    height: 30vw;
+    min-width: 350px;
+    min-height: 350px;
     clip-path: circle(50% at 50% 50%);
 
 }
@@ -230,3 +237,43 @@ footer {
 }
 
  */
+@media only screen and (max-width: 500px) {
+.articleWrapper {
+    flex-direction: column-reverse;
+}
+    .left {
+        border-right: 0;
+        border-top: 2px solid rgb(0, 0, 0);
+    }
+    .imgMotD {
+        min-width: 1px;
+        min-height: 1px;
+        width: 50vw;
+        height: 50vw;
+    }
+    .MotD {
+        flex-flow: initial;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 400px) {
+    main {
+        flex-direction: column;
+    }
+    header {
+        flex: 1;
+    }
+    .articleWrapper {
+        flex: 3;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .imgMotD {
+        min-width: 250px;
+        min-height: 250px;
+        width: 50vw;
+        height: 50vw;
+    }
+}
+

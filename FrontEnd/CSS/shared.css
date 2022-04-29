@@ -4,6 +4,7 @@
     --Red: rgb(227, 0, 11);
     --lightRed: rgb(245, 170, 174);
     --Blue: rgb(0, 191, 255);
+    --lightBlue: rgb(147, 218, 255);
 }
 
 .textFont {
@@ -43,7 +44,7 @@ main {
 }
 
 header {
-    background: url("../Images/SitePictures/HeaderBackground.jpg") no-repeat center center;
+    background: url("../Images/SitePictures/gym_photo.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -52,7 +53,7 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 2px solid rgb(0, 0, 0);
-    height: 175px;
+    height: 20vh;
 }
 
 nav ul {
@@ -96,7 +97,7 @@ nav li a {
 .profilePic {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 10px;
     margin-right: 10px;
     clip-path: none;
 }
@@ -121,13 +122,15 @@ button {
     text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
     background-color:#FFFFFF;
     text-align:center;
-    transition: all 0.15s;
     cursor:pointer;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+button:hover {
+    box-shadow: var(--lightBlue) 0px 1px 10px;
+    transform: scale(1.08);
 }
 
-button:hover {
-    border-radius: 10px;
-}
 #loginBtn {
     margin-top: 16px;
     margin-right: 16px;
@@ -136,6 +139,10 @@ button:hover {
 #navs {
     padding-left: 0;
     margin-left: 16px;
+}
+#midNav {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #lego {
@@ -152,11 +159,154 @@ footer {
     margin-top:auto;
     justify-content: space-between;
     align-items: center;
-    border-style: solid;
-    border-width: 1px;
+    border-top: 2px solid rgb(0, 0, 0);
 }
 
 .footerP {
     padding-right: 10px;
     padding-left: 10px;
+    font-size:calc(8px + 0.5vw);
+}
+.navBtn {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+#navLinks {
+    display: flex;
+    height: 175px;
+    justify-content: center;
+    flex-direction: column;
+}
+.top-nav {
+    display: none;
+}
+
+/* hamburger menu reference https://alvarotrigo.com/blog/hamburger-menu-css/ */
+
+@media only screen and (max-width: 425px) {
+    #navLinks {
+        display: none;
+    }
+    .profileNav {
+        display: none;
+    }
+    #loginBtn {
+        display: none;
+    }
+    .top-nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #00BAF0;
+        background: linear-gradient(to left, #f46b45, #eea849);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: #FFF;
+        height: 50px;
+        padding: 1em;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .menu > li {
+        margin: 0 1rem;
+    }
+
+    .menu-button-container {
+        display: none;
+        height: 100%;
+        width: 30px;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #menu-toggle {
+        display: none;
+    }
+
+    .menu-button,
+    .menu-button::before,
+    .menu-button::after {
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        height: 4px;
+        width: 30px;
+        transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        border-radius: 2px;
+    }
+
+    .menu-button::before {
+        content: '';
+        margin-top: -8px;
+    }
+
+    .menu-button::after {
+        content: '';
+        margin-top: 8px;
+    }
+
+    #menu-toggle:checked + .menu-button-container .menu-button::before {
+        margin-top: 0px;
+        transform: rotate(405deg);
+    }
+
+    #menu-toggle:checked + .menu-button-container .menu-button {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    #menu-toggle:checked + .menu-button-container .menu-button::after {
+        margin-top: 0px;
+        transform: rotate(-405deg);
+    }
+
+    @media (max-width: 700px) {
+        .menu-button-container {
+            display: flex;
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            margin-top: 50px;
+            left: 0;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        #menu-toggle ~ .menu li {
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        #menu-toggle:checked ~ .menu li {
+            border: 1px solid #333;
+            height: 2.5em;
+            padding: 0.5em;
+            transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu > li {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0.5em 0;
+            width: 100%;
+            color: white;
+            background-color: #222;
+        }
+        .menu > li:not(:last-child) {
+            border-bottom: 1px solid #444;
+        }
+    }
 }

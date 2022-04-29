@@ -4,11 +4,25 @@
  * Populate header
  */
 const headerText = `
+<section class="top-nav">
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+    <ul class="menu">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li>Four</li>
+      <li>Five</li>
+    </ul>
+  </section>
+
 <nav id="navLinks">
 <ul class="headingFont" id="navs">
-<li> <a href="index.html"> Home</a> </li>
-<li> <a href="postView.html"> Posts</a> </li>
-<li> <a href="gymmovesView.html"> Gym Moves</a> </li>
+<button> <a class="navBtn" href="index.html"> Home</a> </button>
+<button id="midNav"> <a class="navBtn" href="postView.html"> Posts</a> </button>
+<button> <a class="navBtn" href="gymmovesView.html"> Gym Moves</a> </button>
 </ul>
 </nav>
 <p class="profileNav"><a id="profileLink" href="profileView.html"> LegoLover123</a> <img class="profilePic" width="40px" height="50px" src="../Images/ProfilePics/LegoChewbaccaProPic.jpg"> </p>
