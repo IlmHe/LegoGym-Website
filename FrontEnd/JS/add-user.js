@@ -1,3 +1,4 @@
+
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
 
@@ -23,3 +24,4 @@ addUserForm.addEventListener('submit', async (evt) => {
   alert(json.message);
   //location.href = 'index.html';
 });
+

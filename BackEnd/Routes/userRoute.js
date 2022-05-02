@@ -8,6 +8,8 @@ const {body} = require('express-validator');
 const userController = require('../Controllers/userController');
 const router = express.Router();
 
+router.route('/token')
+.get(userController.checkToken);
 /*
 * User move routes
  */
@@ -46,7 +48,7 @@ router.route(`/:id`)
 router.route('/profilepic/:id')
     .get(userController.user_get_profilepic);
 
-router.get('/token', userController.checkToken);
+
 
 
 module.exports = router;

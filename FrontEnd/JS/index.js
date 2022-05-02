@@ -1,4 +1,6 @@
 'use strict';
+//import {getPostCatAndUser} from './SharedFunctions';
+
 const url = 'http://localhost:3000';
 /*
  *Populate right div
@@ -80,6 +82,7 @@ const createPostCards = (posts) => {
       }
 
     }
+
     getPostCatAndUser();
     const postCatAndUser =  (category, user) => {
       const p2 = document.createElement('p');
@@ -91,6 +94,7 @@ const createPostCards = (posts) => {
       li.appendChild(p2);
       li.appendChild(p3);
     }
+
 
     /*
     const p2 = document.createElement('p');

@@ -33,6 +33,7 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "bcrypt": "^5.0.1",
     "multer": "^1.4.4",
     "nodemon": "^2.0.15"
   }
