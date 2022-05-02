@@ -1,5 +1,5 @@
 'use strict';
-const userModel = require('../models/userModel');
+const userModel = require('../Models/userModel');
 const {validationResult} = require('express-validator')
 
 /**

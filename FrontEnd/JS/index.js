@@ -1,7 +1,7 @@
 'use strict';
 //import {getPostCatAndUser} from './SharedFunctions';
 
-const url = 'http://localhost:3000';
+const url = 'https://10.114.32.55/app/';
 /*
  *Populate right div
  */

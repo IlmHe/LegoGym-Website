@@ -1,6 +1,6 @@
 'use strict';
 
-const gymMoveModel = require('../models/gymMoveModel');
+const gymMoveModel = require('../Models/gymMoveModel');
 
 /**
  * @description: This function is used to get all the gym moves

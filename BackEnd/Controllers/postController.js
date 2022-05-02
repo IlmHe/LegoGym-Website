@@ -1,6 +1,6 @@
 'use strict';
 
-const postModel = require('../models/postModel');
+const postModel = require('../Models/postModel');
 const { validationResult } = require('express-validator');
 
 /**
