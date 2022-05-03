@@ -13,9 +13,9 @@ const port = process.env.PORT || 8000;
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-  require('./utils/production')(app, port);
+  require('./BackEnd/utils/production')(app, port);
 } else {
-  require('./utils/localhost')(app, port);
+  require('./BackEnd/utils/localhost')(app, port);
 }
 app.get('/', (req, res) => {
   res.send('Hello Secure World!');
