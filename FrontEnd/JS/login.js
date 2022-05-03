@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://10.114.32.55/legoapp/'; // change url when uploading to server
+const url = 'https://10.114.32.55/app/'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');

@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = (legoapp, port) => {
-  legoapp.enable('trust proxy');
-  legoapp.use ((req, res, next) => {
+module.exports = (app, port) => {
+  app.enable('trust proxy');
+  app.use ((req, res, next) => {
     if (req.secure) {
       next();
     } else {
@@ -10,5 +10,5 @@ module.exports = (legoapp, port) => {
       res.redirect(301, `https://${req.headers.host}${proxypath}${req.url}`);
     }
   });
-  legoapp.listen(port);
+  app.listen(port);
 };

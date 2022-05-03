@@ -1,6 +1,6 @@
 'use strict';
 
-const url = 'https://10.114.32.55/legoapp/';
+const url = 'https://10.114.32.55/app/';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 

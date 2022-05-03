@@ -8,16 +8,16 @@ const gymMoveRoute = require('./BackEnd/Routes/gymMoveRoute');
 const authRoute = require('./BackEnd/Routes/authRoute');
 const passport = require('./BackEnd/utils/pass');
 const session = require("express-session");
-const legoapp = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-  require('./BackEnd/utils/production')(legoapp, port);
+  require('./BackEnd/utils/production')(app, port);
 } else {
-  require('./BackEnd/utils/localhost')(legoapp, port);
+  require('./BackEnd/utils/localhost')(app, port);
 }
-legoapp.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello Secure World!');
 });
 
@@ -32,12 +32,12 @@ legoapp.get('/', (req, res) => {
 
 legoapp.set('views', './FrontEnd/Views');
 legoapp.set('view engine', 'pug');*/
-legoapp.use(cors());
-legoapp.use(express.json()); // for parsing appliuserion/json
-legoapp.use(express.urlencoded({ extended: true }));// for parsing appliuserion/x-www-form-urlencoded
+app.use(cors());
+app.use(express.json()); // for parsing appliuserion/json
+app.use(express.urlencoded({ extended: true }));// for parsing appliuserion/x-www-form-urlencoded
 
 //legoapp.use(session({secret: "ojoeaogjeojoaevajvavea"}));
-legoapp.use(passport.initialize());
+app.use(passport.initialize());
 //legoapp.use(passport.session());
 
 
@@ -48,18 +48,18 @@ legoapp.use(passport.initialize());
 //Lisätty
 //legoapp.use('/gymMove/moveoftheday', gymMoveRoute);
 
-legoapp.use(express.static('uploads'));
-legoapp.use('/auth', authRoute);
+app.use(express.static('uploads'));
+app.use('/auth', authRoute);
 //legoapp.use('/gymMove', gymMoveRoute);
 //legoapp.use('/user', userRoute);
 //legoapp.use('/post', postRoute)
 
 
-legoapp.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
-legoapp.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
-legoapp.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
+app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
-legoapp.get('/', (req, res) => {
+app.get('/', (req, res) => {
   if (req.secure) {
     res.send('Hello Secure World!');
   } else {
