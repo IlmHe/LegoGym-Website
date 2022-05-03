@@ -2,11 +2,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const userRoute = require('./Backend/Routes/userRoute');
-const postRoute = require('./Backend/Routes/postRoute');
-const gymMoveRoute = require('./Backend/Routes/gymMoveRoute');
-const authRoute = require('./Backend/Routes/authRoute');
-const passport = require('./Backend/utils/pass');
+const userRoute = require('./BackEnd/Routes/userRoute');
+const postRoute = require('./BackEnd/Routes/postRoute');
+const gymMoveRoute = require('./BackEnd/Routes/gymMoveRoute');
+const authRoute = require('./BackEnd/Routes/authRoute');
+const passport = require('./BackEnd/utils/pass');
 const session = require("express-session");
 const app = express();
 const port = process.env.PORT || 3000;
