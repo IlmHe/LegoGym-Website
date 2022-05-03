@@ -104,9 +104,9 @@ const getProfilePic = async (id, res) => {
 
 const getUserLogin = async (params) => {
   try {
-    console.log("params: ",params);
+    console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM Users WHERE email = ?;',
+        'SELECT * FROM Users WHERE Email = ?;',
         params);
     return rows;
   } catch (e) {

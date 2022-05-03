@@ -17,9 +17,18 @@ passport.use(new Strategy(
         if (user === undefined) {
           return done(null, false, {message: 'Incorrect email.'});
         }
+        /*
+        if (user.Password !== Password) {
+          return done(null, false, {message: 'Incorrect password.'});
+        }
+
+         */
+
         if (!await bcrypt.compare(Password, user.Password)) {
           return done(null, false, {message: 'Incorrect password.',user});
         }
+
+
         delete user.Password;
         return done(null, {...user}, {message: 'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
       } catch (err) {
