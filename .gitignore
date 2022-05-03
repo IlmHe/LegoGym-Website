@@ -88,3 +88,7 @@ typings/
 uploads/*
 # except one (empty) file to have the folder in version control
 !uploads/.gitkeep
+
+# ssl keys and certification
+*.csr
+*.pem

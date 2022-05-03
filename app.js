@@ -9,7 +9,18 @@ const authRoute = require('./BackEnd/Routes/authRoute');
 const passport = require('./BackEnd/utils/pass');
 const session = require("express-session");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (process.env.NODE_ENV === 'production') {
+  require('./utils/production')(app, port);
+} else {
+  require('./utils/localhost')(app, port);
+}
+app.get('/', (req, res) => {
+  res.send('Hello Secure World!');
+});
+
 
 /*const loggedIn = (req, res, next) => {
   if (req.user) {
@@ -39,16 +50,22 @@ app.use(passport.initialize());
 
 app.use(express.static('uploads'));
 app.use('/auth', authRoute);
-app.use('/gymMove', gymMoveRoute);
-app.use('/user', userRoute);
-app.use('/post', postRoute)
+//app.use('/gymMove', gymMoveRoute);
+//app.use('/user', userRoute);
+//app.use('/post', postRoute)
 
-/*
+
 app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
- */
+app.get('/', (req, res) => {
+  if (req.secure) {
+    res.send('Hello Secure World!');
+  } else {
+    res.send('not secured?');
+  }
+});
 
 
 /*app.post('/login',
