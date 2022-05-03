@@ -2,9 +2,9 @@
   "name": "legogym-website",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "legoapp.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon legoapp.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

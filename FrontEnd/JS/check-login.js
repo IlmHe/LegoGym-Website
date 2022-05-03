@@ -1,10 +1,10 @@
 (async () => {
   'use strict';
-  const url = 'https://10.114.32.55/app/'; // change url when uploading to server
+  const url = 'https://10.114.32.55/legoapp/'; // change url when uploading to server
 
   // check sessionStorage
   if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-    location.href = 'login.html';
+    location.href = 'registerView.html';
     return;
   }
   // check if token valid

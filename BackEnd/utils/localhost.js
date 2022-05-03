@@ -19,7 +19,7 @@ const httpsRedirect = (req, res) => {
 
 //https.createServer(options, app).listen(8000);
 
-module.exports = (app, httpPort) => {
-  https.createServer(options, app).listen(8000);
+module.exports = (legoapp, httpPort) => {
+  https.createServer(options, legoapp).listen(8000);
   http.createServer(httpsRedirect).listen(httpPort);
 };
