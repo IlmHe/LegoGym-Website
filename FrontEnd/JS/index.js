@@ -1,7 +1,7 @@
 'use strict';
 //import {getPostCatAndUser} from './SharedFunctions';
-
-const url = 'https://10.114.32.55/app/';
+const url = 'https://localhost:8000';
+//const url = 'https://10.114.32.55/app/';
 /*
  *Populate right div
  */
@@ -62,6 +62,7 @@ const createPostCards = (posts) => {
 
     const p1 = document.createElement('p');
     p1.innerHTML = `PostText: ${post.PostText}`;
+
 
     const getPostCatAndUser = async () => {
       try {
@@ -131,6 +132,7 @@ const createPostCards = (posts) => {
         console.log(e.message);
       }
     };
+
     getPost();
 
 
@@ -162,6 +164,7 @@ const createMoveOfTheDayCard = (move) => {
   p1.innerHTML = `MoveName: ${move.MoveName}`;
   divMotD.appendChild(p1);
 
+
   const getMoveCategoryName = async () => {
     try {
       const fetchOptions = {
@@ -179,6 +182,8 @@ const createMoveOfTheDayCard = (move) => {
     }
 
   }
+
+
   getMoveCategoryName();
   const moveCategory =  (category) => {
     const p2 = document.createElement('p');

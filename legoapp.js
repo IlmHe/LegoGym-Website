@@ -50,14 +50,14 @@ app.use(passport.initialize());
 
 app.use(express.static('uploads'));
 app.use('/auth', authRoute);
-//legoapp.use('/gymMove', gymMoveRoute);
-//legoapp.use('/user', userRoute);
-//legoapp.use('/post', postRoute)
+app.use('/gymMove', gymMoveRoute);
+app.use('/user', userRoute);
+app.use('/post', postRoute)
 
 
-app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
-app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
+//app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
+//app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
 app.get('/', (req, res) => {
   if (req.secure) {
