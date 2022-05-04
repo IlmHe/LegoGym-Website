@@ -51,12 +51,12 @@ app.use(passport.initialize());
 app.use(express.static('uploads'));
 app.use('/auth', authRoute);
 app.use('/gymMove', gymMoveRoute);
-//app.use('/user', userRoute);
+app.use('/user', userRoute);
 app.use('/post', postRoute)
 
 
 //app.use('/gymMove', passport.authenticate('jwt', {session: false}), gymMoveRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 //app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
 app.get('/', (req, res) => {
