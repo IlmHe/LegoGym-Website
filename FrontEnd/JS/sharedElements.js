@@ -1,6 +1,6 @@
 'use strict';
-const urlShared = 'https://localhost:8000';
-//const url = 'https://10.114.32.55/app/';
+//const urlShared = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/';
 
 // get user data
 const user12 = JSON.parse(sessionStorage.getItem('user'));
