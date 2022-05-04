@@ -37,12 +37,13 @@
     <div class="forms">
         <div class="form-wrapper">
             <h3 class="headingFont" style="color: #FFFFFF">Register</h3>
-            <form action="http://localhost:3000/user" method="post" class="light-border" id="addUserForm">
-                <input class="light-border textFont" type="text" name="Username" placeholder="Name" required minlength="3">
-                <input class="light-border textFont" type="email" name="Email" placeholder="email" required >
-                <input class="light-border textFont" type="password" name="Password" placeholder="Password" required pattern="(?=.*[A-Z]).{8,}">
-                <input class="light-border textFont" type="text" name="ProfilePic" placeholder="profile pic" required >
-                <input class="light-border textFont" type="text" name="ProfileText" placeholder="profile text" required >
+            <form id="addUserForm" class="light-border" action="http://localhost:3000/user" method="post"  >
+                <input class="light-border textFont" type="text" name="username" placeholder="Name" required minlength="3">
+                <input class="light-border textFont" type="email" name="email" placeholder="email" required >
+                <input class="light-border textFont" type="password" name="password" placeholder="Password" required pattern="(?=.*[A-Z]).{8,}">
+
+                <input class="light-border textFont" type="text" name="profiletext" placeholder="profile text" required >
+                <input class="light-border textFont" type="text" name="profilepic" placeholder="profile pic" required >
                 <button class="light-border textFont" type="submit">Save</button>
             </form>
         </div>
@@ -52,7 +53,7 @@
 
 </footer>
 <script src="../JS/serialize.js"></script>
-<!-- <script src="../JS/add-user.js"></script> -->
+<!--<script src="../JS/add-user.js"></script> -->
 
 <script src="../JS/login.js"></script>
 <script src="../JS/sharedElements.js"></script>

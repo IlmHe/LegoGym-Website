@@ -4,6 +4,9 @@ const url = 'https://localhost:8000';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
 
+// get user data for admin check
+const user12 = JSON.parse(sessionStorage.getItem('user'));
+
 const createProfileInfoCard = (user) => {
     viewProfileInfo.innerHTML = '';
 
@@ -79,7 +82,7 @@ const viewProfileDetail = async () => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/user/2', fetchOptions);
+    const response = await fetch(url + '/user/' + user12.UserId, fetchOptions);
     const user = await response.json();
     createProfileInfoCard(user);
   } catch (e) {

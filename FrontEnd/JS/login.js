@@ -84,7 +84,7 @@ const url = 'https://localhost:8000';
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');
-const addUserForm = document.querySelector('#add-user-form');
+const addUserForm = document.querySelector('#addUserForm');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {

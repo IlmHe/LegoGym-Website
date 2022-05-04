@@ -9,6 +9,7 @@ const addUserForm = document.querySelector('#addUserForm');
 /**
  * POST method to add a new user to the database
  */
+
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
@@ -25,4 +26,6 @@ addUserForm.addEventListener('submit', async (evt) => {
   alert(json.message);
   //location.href = 'index.html';
 });
+
+
 

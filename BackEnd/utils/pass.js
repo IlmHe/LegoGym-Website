@@ -17,6 +17,7 @@ passport.use(new Strategy(
         if (user === undefined) {
           return done(null, false, {message: 'Incorrect email.'});
         }
+
         /*
         if (user.Password !== Password) {
           return done(null, false, {message: 'Incorrect password.'});
@@ -24,9 +25,13 @@ passport.use(new Strategy(
 
          */
 
+
+
         if (!await bcrypt.compare(Password, user.Password)) {
           return done(null, false, {message: 'Incorrect password.',user});
         }
+
+
 
 
         delete user.Password;
