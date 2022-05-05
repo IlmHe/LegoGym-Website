@@ -90,7 +90,6 @@ const deleteUser = async (id, res) => {
   }
 };
 
-//TODO test if works
 const getProfilePic = async (id, res) => {
   try {
     const [rows] = await promisePool.query('SELECT FilePath FROM ProfilePics RIGHT JOIN Users ON ProfilePics.ProfilePicId = Users.ProfilePic WHERE Users.UserId = ?', [id]);
@@ -114,6 +113,28 @@ const getUserLogin = async (params) => {
   }
 };
 
+const getAllProfilePics = async (res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM ProfilePics');
+    return rows;
+  } catch (e) {
+    console.error('User model getAllProfilePics error', e.message);
+    res.status(500).json({message: 'Something went wrong'});
+    return;
+  }
+};
+
+const getAllCategories = async (res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM Category');
+    return rows;
+  } catch (e) {
+    console.error('User model getAllCategories error', e.message);
+    res.status(500).json({message: 'Something went wrong'});
+    return;
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserId,
@@ -122,4 +143,6 @@ module.exports = {
   deleteUser,
   getProfilePic,
   getUserLogin,
+  getAllProfilePics,
+  getAllCategories
 };

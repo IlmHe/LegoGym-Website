@@ -77,12 +77,30 @@ const createProfileInfoCard = (user) => {
     viewProfileInfo.appendChild(divElement);
 }
 
-const addPostForm = document.querySelector('#addPostForm');
 
-const addPostCard = (user) => {
-  addPostForm.innerHTML = '';
+const categoryList = document.querySelector('.select-category');
+const addPostCard = (categories) => {
+  categoryList.innerHTML = '';
+
+  categories.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category.CategoryId;
+    option.innerHTML = category.CategoryName;
+    categoryList.appendChild(option);
+  });
 }
 
+const creatorId = document.querySelector('#loggedinuser');
+
+//const getCreatorId = (user) => {
+  creatorId.innerHTML = '';
+  const option = document.createElement('option');
+  option.value = userProView.UserId;
+  option.innerHTML = userProView.Username;
+  creatorId.appendChild(option);
+
+//}
+const postForm = document.querySelector('#addPostForm');
 
 const viewProfileDetailInProView = async () => {
   try {
@@ -101,9 +119,9 @@ const viewProfileDetailInProView = async () => {
 viewProfileDetailInProView()
 
 
-addPostForm.addEventListener('submit', async (evt) => {
+postForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const fd = new FormData(addPostForm);
+  const fd = new FormData(postForm);
   const fetchOptions = {
     method: 'POST',
     body: fd,
@@ -114,6 +132,24 @@ addPostForm.addEventListener('submit', async (evt) => {
   alert(json.message);
   //location.href = 'index.html';
 });
+
+
+const getCategories = async () => {
+  try {
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/user/category/all', fetchOptions);
+    const categories = await response.json();
+    console.log(categories);
+    addPostCard(categories);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+getCategories()
 
 /*
 //Populate right div

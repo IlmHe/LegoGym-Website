@@ -4,6 +4,9 @@ const url = 'https://localhost:8000';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
+const userGymMovesView = JSON.parse(sessionStorage.getItem('user'));
+
+
 const createScrollableGymMoveCard = (moves) => {
 
   /*
@@ -80,27 +83,33 @@ const createScrollableGymMoveCard = (moves) => {
     p3.innerHTML = `Likes: ${move.Likes}`;
     divAllMoves.appendChild(p3);
 
-    //TODO fix button
-    const likeButton = document.createElement('button');
-    likeButton.innerText = 'Like';
-    likeButton.classList.add('likeButton');
-    likeButton.addEventListener('click', async (evt) => {
-      evt.preventDefault();
-      try {
-        const fetchOptions = {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
-        };
-        const response = await fetch(url + '/gymMove/like/' + move.GymMoveId, fetchOptions);
-        const updatedMove = await response.json();
-        return updatedMove;
-      } catch (e) {
-        console.log(e.message);
-      }
-    });
+    if (userGymMovesView) {
+
+      const likeButton = document.createElement('button');
+      likeButton.innerText = 'Like';
+      likeButton.classList.add('likeButton');
+      likeButton.addEventListener('click', async (evt) => {
+        evt.preventDefault();
+        try {
+          const fetchOptions = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+          };
+          const response = await fetch(url + '/gymMove/like/' + move.GymMoveId, fetchOptions);
+          const updatedMove = await response.json();
+          console.log('Move liked', updatedMove);
+          viewAllMoves();
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+
+      divAllMoves.appendChild(likeButton);
+
+    }
 
     const divElement = document.createElement('div');
     divElement.classList.add('moveCardDiv');
@@ -109,7 +118,7 @@ const createScrollableGymMoveCard = (moves) => {
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllMoves);
-    divElement.appendChild(likeButton);
+    //divElement.appendChild(likeButton);
     viewScrollAllGymMoves.appendChild(divElement);
 
   });
