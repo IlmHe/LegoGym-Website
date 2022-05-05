@@ -4,6 +4,8 @@ const url = 'https://localhost:8000';
 
 const viewScrollAllPosts = document.querySelector('.viewAllPosts');
 
+const userPostView = JSON.parse(sessionStorage.getItem('user'));
+
 const createScrollablePostCard = (posts) => {
 
   viewScrollAllPosts.innerHTML = '';
@@ -66,26 +68,69 @@ const createScrollablePostCard = (posts) => {
     p4.innerHTML = `Likes: ${post.PostLike}`;
     divAllPosts.appendChild(p4);
 
-    const likeButton = document.createElement('button');
-    likeButton.innerText = 'Like';
-    likeButton.classList.add('likeButton');
-    likeButton.addEventListener('click', async (evt) => {
-      evt.preventDefault();
-      try {
-        const fetchOptions = {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
-        };
-        const response = await fetch(url + '/post/like/' + post.PostId, fetchOptions);
-        const updatedPost = await response.json();
-        return updatedPost;
-      } catch (e) {
-        console.log(e.message);
-      }
-    });
+
+    if (userPostView) {
+
+    if (userPostView === null) {
+      const p5 = document.createElement('p');
+      p5.innerHTML = 'You are not logged in';
+      divAllPosts.appendChild(p5);
+    } else if (userPostView.Role === 1 || userPostView.Role === 0) {
+
+      const likeButton = document.createElement('button');
+      likeButton.innerText = 'Like';
+      likeButton.classList.add('likeButton');
+      likeButton.addEventListener('click', async (evt) => {
+        evt.preventDefault();
+        try {
+          const fetchOptions = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+          };
+          const response = await fetch(url + '/post/like/' + post.PostId,
+              fetchOptions);
+          const updatedPost = await response.json();
+          return updatedPost;
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+      divAllPosts.appendChild(likeButton);
+    }
+
+    if (userPostView === 'null') {
+      const p6 = document.createElement('p');
+      p6.innerHTML = 'You are not logged in';
+      divAllPosts.appendChild(p6);
+    } else if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
+      const deleteButton = document.createElement('button');
+      deleteButton.innerText = 'Delete';
+      deleteButton.classList.add('likeButton');
+
+      deleteButton.addEventListener('click', async (evt) => {
+        evt.preventDefault();
+        try {
+          const fetchOptions = {
+            method: 'DELETE',
+            headers: {
+              Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+          };
+          const response = await fetch(url + '/post/' + post.PostId, fetchOptions);
+          const deletePost = await response.json();
+          console.log('post deleted', deletePost);
+          viewAllPosts();
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+      divAllPosts.appendChild(deleteButton);
+    }
+
+    }
 
     /*
     const p2 = document.createElement('p');
@@ -101,11 +146,12 @@ const createScrollablePostCard = (posts) => {
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllPosts);
-    divElement.appendChild(likeButton);
+    //divElement.appendChild(likeButton);
     viewScrollAllPosts.appendChild(divElement);
 
   });
 }
+
 
 const viewAllPosts = async () => {
   try {
@@ -123,3 +169,7 @@ const viewAllPosts = async () => {
 
 }
 viewAllPosts();
+
+
+
+
