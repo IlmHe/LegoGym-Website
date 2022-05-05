@@ -104,7 +104,14 @@ footer {
 }
 */
 
-
+main {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 1300px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    height: 100%;
+}
 
 .left {
     display: flex;

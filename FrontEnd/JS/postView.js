@@ -30,7 +30,7 @@ const createScrollablePostCard = (posts) => {
     divAllPosts.classList.add('allPosts');
 
     const p1 = document.createElement('p');
-    p1.innerHTML = `PostText: ${post.PostText}`;
+    p1.innerHTML = `${post.PostText}`;
     divAllPosts.appendChild(p1);
 
 

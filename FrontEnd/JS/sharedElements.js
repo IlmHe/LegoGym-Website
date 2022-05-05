@@ -15,19 +15,20 @@ const headerText = `
     <div class='menu-button'></div>
   </label>
     <ul class="menu">
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-      <li>Four</li>
-      <li>Five</li>
+      <li onclick="location.href='index.html'">Home</li>
+      <li onclick="location.href='postView.html'">Posts</li>
+      <li onclick="location.href='gymmovesView.html'">Gym moves</li>
+      <li onclick="location.href='profileView.html'">Profile</li>
+      <li onclick="location.href='registerView.html'">Login</li>
+      <li onclick="location.href='logout.html'">Logout</li>
     </ul>
   </section>
 
 <nav id="navLinks">
 <ul class="headingFont" id="navs">
-<button> <a class="navBtn" href="index.html"> Home</a> </button>
-<button id="midNav"> <a class="navBtn" href="postView.html"> Posts</a> </button>
-<button> <a class="navBtn" href="gymmovesView.html"> Gym Moves</a> </button>
+<button id="firstBtn" onclick="location.href='index.html'"> <a class="navBtn"> Home</a> </button>
+<button id="midNav" onclick="location.href='postView.html'"> <a class="navBtn"> Posts</a> </button>
+<button onclick="location.href='gymmovesView.html'"> <a class="navBtn"> Gym Moves</a> </button>
 </ul>
 </nav>
 <p class="profileNav"> </p>

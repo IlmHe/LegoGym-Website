@@ -1,4 +1,11 @@
-
+main {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 1300px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    height: 100%;
+}
 .container {
     max-width: 40em;
     margin: auto;
@@ -34,6 +41,7 @@ figure {
     width: 100%;
 }
 
+
 .forms {
     display: flex;
     flex-wrap: wrap;
@@ -42,6 +50,7 @@ figure {
 
 .form-wrapper {
     width: 33%;
+    min-width: 170px;
 }
 
 input,
@@ -61,6 +70,9 @@ select {
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
     background-size: 0.65em auto, 100%;
+}
+#firstBtn{
+    margin-top: 16px;
 }
 
 .button {
