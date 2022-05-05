@@ -55,7 +55,7 @@ document.querySelector('footer').innerHTML = footerText;
 const profileNav = document.querySelector('.profileNav');
 
 const createProfileNavCard = (user, profilePic) => {
-  profileNav.innerHTML = `<a id="profileLink" href="profileView.html"> ${user.Username} </a> <img class="profilePic" width="40px" height="50px" src=${profilePic.FilePath}> `;
+  profileNav.innerHTML = `<button id="profileLink" onclick="location.href='profileView.html'"> ${user.Username} </button> <img class="profilePic" width="40px" height="50px" src=${profilePic.FilePath}> `;
 };
 
 const viewProfileDetail = async () => {
