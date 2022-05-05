@@ -26,12 +26,10 @@ const createScrollableGymMoveCard = (moves) => {
    */
 
   viewScrollAllGymMoves.innerHTML = '';
-
   // Headline for recent posts
   const h2 = document.createElement('h2');
-  h2.classList.add('headingFont');
-  h2.innerText = 'Gym Moves';
   viewScrollAllGymMoves.appendChild(h2);
+
 
   moves.forEach((move) => {
 

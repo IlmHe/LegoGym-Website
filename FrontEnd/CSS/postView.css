@@ -1,5 +1,5 @@
 
-article {
+/*article {
     height: 60vh;
     display: flex;
     flex-direction: row;
@@ -101,3 +101,225 @@ button:hover {
     background-color: rgb(0,0,255);
 }
  */
+#divText {
+    padding: 10px
+}
+
+#userNameText {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.middle {
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+.viewAllPosts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.postCardDiv {
+    padding: 30px;
+}
+.postCardDiv > img {
+    border-radius: 10px;
+}
+
+.gymMoveWrapper {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+main {
+    height: 100%;
+    flex-flow: column nowrap;
+}
+.gymmoveText {
+    text-align: center;
+}
+
+.imgMotD {
+    background: no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    width: 30vw;
+    height: 30vw;
+    min-width: 350px;
+    min-height: 350px;
+    clip-path: circle(50% at 50% 50%);
+
+}
+
+p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    word-break: break-all;
+    margin: 0;
+    padding: 5px;
+}
+
+.MotDInfo {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+}
+.left li {
+    list-style-type: none;
+    padding: 5px;
+}
+
+/*
+:root {
+    --Yellow: rgb(255, 237, 0);
+    --lightYellow: rgb(255, 252, 220);
+    --Red: rgb(227, 0, 11);
+    --lightRed: rgb(245, 170, 174);
+    --Blue: rgb(0, 191, 255);
+}
+
+.textFont {
+    font-family: 'IBM Plex Sans', sans-serif;
+    word-break: break-all;
+}
+
+.headingFont {
+    font-family: 'IBM Plex Serif', serif;
+    word-break: break-all;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+}
+
+html {
+    background: url("FrontEnd/Images/SitePictures/LegoMilleniumFalcon.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+main {
+    max-width: 1000px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    padding: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+div ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    padding: 5px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    transition: color 1s;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+}
+
+button {
+    background-color: rgba(19, 165, 218, 0.64);
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    transition: background-color 1s;
+}
+
+button:hover {
+    background-color: rgb(0, 0, 255);
+}
+
+.yla {
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    background: url("Images/LegoHarry (1).jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    flex: 3;
+}
+
+.ala {
+    background-color: rgb(255, 255, 255);
+    flex: 2;
+
+
+footer {
+    display: flex;
+    background-color: rgb(128, 128, 128);
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.footerP {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+ */
+@media only screen and (max-width: 500px) {
+    .articleWrapper {
+        flex-direction: column-reverse;
+    }
+    .left {
+        border-right: 0;
+        border-top: 2px solid rgb(0, 0, 0);
+    }
+    .imgMotD {
+        min-width: 1px;
+        min-height: 1px;
+        width: 50vw;
+        height: 50vw;
+    }
+    .viewAllPosts {
+        flex-flow: initial;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 400px) {
+    main {
+        flex-direction: column;
+    }
+    header {
+        flex: 1;
+    }
+    .gymMoveWrapper {
+        flex: 3;
+    }
+}

@@ -59,13 +59,13 @@ app.use('/post', postRoute)
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 //app.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   if (req.secure) {
     res.send('Hello Secure World!');
   } else {
     res.send('not secured?');
   }
-});
+});*/
 
 
 /*legoapp.post('/login',
@@ -98,6 +98,6 @@ legoapp.get('/secret/logout', function (req, res) {
 });*/
 
 
-//legoapp.listen(port, () => console.log(`Example app listening on port ${port}!`));
+//app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 //https.createServer(options, legoapp).listen(8001);
 

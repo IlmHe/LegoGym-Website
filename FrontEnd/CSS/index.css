@@ -1,6 +1,6 @@
 
 .articleWrapper {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -17,6 +17,9 @@
     border-right: 2px solid rgb(0, 0, 0);
     flex: 1;
     min-width: 200px;
+}
+.left > li > img {
+    max-width: 195px;
 }
 
 /*
@@ -86,6 +89,11 @@
     flex-flow: column wrap;
 }
 main {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 1300px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
     height: 100%;
 }
 
@@ -260,12 +268,6 @@ footer {
 @media only screen and (max-width: 400px) {
     main {
         flex-direction: column;
-    }
-    header {
-        flex: 1;
-    }
-    .articleWrapper {
-        flex: 3;
     }
 }
 @media only screen and (max-width: 700px) {
