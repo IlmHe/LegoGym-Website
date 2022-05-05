@@ -1,6 +1,5 @@
 'use strict';
 const userModel = require('../models/userModel');
-const {validationResult} = require('express-validator')
 
 /**
  * @description: This function is used to get all the users
@@ -38,38 +37,6 @@ const user_post = async (req, res) => {
   const id = await userModel.createUser(user, res);
   res.json({message: `usercreated with id: ${id}`});
 };
-
-
-/*
-const user_post = async (req, res) => {
-  console.log(`user controller post body`, req.body);
-
-  if (!req.file) {
-    return res.status(400).json({
-          message: `file is invalid`
-        }
-    );
-  }
-  console.log(`user controller post file`, req.file);
-  //Stop if validation errors
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log('validation errors', errors);
-    return res.status(400).json({
-          message: `user upload failed: validation error ${errors}`,
-          errors: errors
-        }
-    );
-  }
-
-  const user = req.body;
-  user.filename = req.file.filename;
-  const id = await userModel.createUser(user, res);
-  res.json({message: `user created with id: ${id}`});
-  //res.json({message: `user created`})
-};
- */
 
 /**
  * @description: This function is used to update a user

@@ -1,10 +1,9 @@
 'use strict';
-const url = 'https://localhost:8000';
-//const url = 'https://10.114.32.55/app/';
+
+//const url = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
-
-const postCreation = document.querySelector('.makeANewPost');
 
 // get user data
 const userProView = JSON.parse(sessionStorage.getItem('user'));
@@ -84,14 +83,12 @@ const addPostCard = (categories) => {
 
 const creatorId = document.querySelector('#loggedinuser');
 
-//const getCreatorId = (user) => {
 creatorId.innerHTML = '';
 const option = document.createElement('option');
 option.value = userProView.UserId;
 option.innerHTML = userProView.Username;
 creatorId.appendChild(option);
 
-//}
 const postForm = document.querySelector('#addPostForm');
 
 const viewProfileDetailInProView = async () => {
@@ -122,7 +119,6 @@ postForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
   alert(json.message);
-  //location.href = 'index.html';
 });
 
 const getCategories = async () => {
@@ -141,20 +137,3 @@ const getCategories = async () => {
   }
 };
 getCategories();
-
-/*
-//Populate right div
-const rightDivText = `<h3 class ="headingFont" id ="userNameText"> POSTS GO HERE!!  </h3>
-<p><img src="https://ideascdn.lego.com/media/generate/lego_ci/bcf52b26-a2b1-4975-8c38-59efa86eb254/resize:900:600/legacy" id="postPic"></p>
-<p class = "textFont" id ="divText"> all ultimate gurus believe each other, only great teachers have a volume.  </p>`;
-
-document.querySelector('.right').innerHTML = rightDivText;
-
-//Populate left div
-const leftDivText = `<h3 class ="headingFont" id ="userNameText"> Usernameasddddddddddddddd </h3>
-<p><img src="https://ideascdn.lego.com/media/generate/lego_ci/bcf52b26-a2b1-4975-8c38-59efa86eb254/resize:900:600/legacy" id="postPic"></p>
-<p class = "textFont" id ="divText"> all ultimate gurus believe each other, only great teachers have a volume.  </p>`;
-
-document.querySelector('.left').innerHTML = leftDivText;
-
- */

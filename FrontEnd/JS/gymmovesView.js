@@ -1,38 +1,17 @@
 'use strict';
-const url = 'https://localhost:8000';
-//const url = 'https://10.114.32.55/app/';
+//const url = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
 const userGymMovesView = JSON.parse(sessionStorage.getItem('user'));
 
-
 const createScrollableGymMoveCard = (moves) => {
-
-  /*
-  const getGymMoveCategoryName = async () => {
-    try {
-      const fetchOptions = {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      };
-      const responseCategory = await fetch(url + '/gymMove/categoryname/'+moves.Category, fetchOptions);
-      const category = await responseCategory.json();
-      createScrollableGymMoveCard(category);
-    } catch (e) {
-      console.log(e.message);
-    }
-  }
-  getGymMoveCategoryName();
-
-   */
 
   viewScrollAllGymMoves.innerHTML = '';
   // Headline for recent posts
   const h2 = document.createElement('h2');
   viewScrollAllGymMoves.appendChild(h2);
-
 
   moves.forEach((move) => {
 
@@ -55,7 +34,6 @@ const createScrollableGymMoveCard = (moves) => {
 
     const getMoveCategoryName = async () => {
       try {
-
         const fetchOptions = {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -69,14 +47,12 @@ const createScrollableGymMoveCard = (moves) => {
       } catch (e) {
         console.log(e.message);
       }
-
     }
     getMoveCategoryName();
     const moveCategory =  (category) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Move category: ${category.CategoryName}`;
       divAllMoves.appendChild(p2);
-
     }
 
     const p3 = document.createElement('p');
@@ -106,21 +82,15 @@ const createScrollableGymMoveCard = (moves) => {
           console.log(e.message);
         }
       });
-
       divAllMoves.appendChild(likeButton);
-
     }
 
     const divElement = document.createElement('div');
     divElement.classList.add('moveCardDiv');
 
-
-
     divElement.appendChild(figure);
     divElement.appendChild(divAllMoves);
-    //divElement.appendChild(likeButton);
     viewScrollAllGymMoves.appendChild(divElement);
-
   });
 }
 
@@ -135,33 +105,9 @@ const viewAllMoves = async () => {
 
     const responseMoves = await fetch(url + '/gymMove/', fetchOptions);
     const moves = await responseMoves.json();
-   // const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);
-   // const category = await responseCategory.json();
-   // const responseUpdateLike = await fetch(url + '/gymMove/like/'+7, fetchOptions);
-   // const updateLike = await responseUpdateLike.json();
     createScrollableGymMoveCard(moves);
   } catch (e) {
     console.log(e.message);
   }
-
 }
 viewAllMoves();
-
-/*
-const getGymMoveCategoryName = async () => {
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + 'gymMove/categoryname/', fetchOptions);
-    const category = await response.json();
-    createScrollableGymMoveCard(category);
-  } catch (e) {
-    console.log(e.message);
-  }
-}
-getGymMoveCategoryName();
-
- */

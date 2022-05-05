@@ -1,4 +1,5 @@
 'use strict';
+
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
@@ -46,21 +47,6 @@ const createPost = async (post, res) => {
     return;
   }
 };
-/*
-const createPost = async (post, res) => {
-  try {
-    const [rows] = await promisePool.query(`INSERT INTO Posts(PostText, PostImage, Category, CreatedById) VALUES (?,?,?,?)`,
-        [post.PostText, post.PostImage, post.Category, post.CreatedById]);
-    console.log(`Post model insert`, rows, rows[0]);
-    return rows.insertId;
-  } catch (e) {
-    console.error('Post model createGymMove error', e.message);
-    res.status(500).json({message: "Something went wrong"});
-    return;
-  }
-};
-
- */
 
 /**
  * Deletes a post from the database, else returns an error

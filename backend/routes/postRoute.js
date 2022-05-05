@@ -1,13 +1,12 @@
 'use strict';
 const express = require(`express`);
 const multer = require('multer');
-const {body} = require('express-validator');
 const postController = require('../controllers/postController');
 const router = express.Router();
 
-/*
-* Post routes
- */
+
+//Post routes
+
 const fileFilter = (req, file, cb) => {
   const allowedMimetypes = ['image/jpeg', 'image/png'];
   if (allowedMimetypes.includes(file.mimetype)) {

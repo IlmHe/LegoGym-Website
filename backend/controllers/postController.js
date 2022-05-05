@@ -55,15 +55,6 @@ const post_post = async (req, res) => {
   const id = await postModel.createPost(post, res);
   res.json({message: `post created with id: ${id}`});
 };
-/*
-const post_post = async (req, res) => {
-  console.log(`post controller post body`, req.body);
-  const post = req.body;
-  const id = await postModel.createPost(post, res);
-  res.json({message: `post created with id: ${id}`});
-};
-
- */
 
 /**
  * @description: This function is used to update a post

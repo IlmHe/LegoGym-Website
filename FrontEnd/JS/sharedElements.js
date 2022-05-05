@@ -1,13 +1,13 @@
 'use strict';
-const urlShared = 'https://localhost:8000';
-//const urlShared = 'https://10.114.32.55/app/';
+
+//const urlShared = 'https://localhost:8000';
+const urlShared = 'https://10.114.32.55/app/';
 
 // get user data
 const user12 = JSON.parse(sessionStorage.getItem('user'));
 
-/*
- * Populate header
- */
+
+//Populate header
 const headerText = `
 <section class="top-nav">
     <input id="menu-toggle" type="checkbox" />
@@ -39,12 +39,10 @@ const headerText = `
 </nav>
 `;
 
-
 document.querySelector('header').innerHTML = headerText;
 
-/*
- * Populate footer
- */
+
+//Populate footer
 const footerText = `
 <p class = "footerP textFont">Support: admin@metropolia.fi</p>
 <p class = "footerP textFont">Feedback: admin2@metropolia.fi</p>
@@ -76,14 +74,3 @@ const viewProfileDetail = async () => {
   }
 }
 viewProfileDetail()
-
-
-    /*
-< a
-id = "profileLink"
-href = "profileView.html" > LegoLover123 <
-    /a> <img className="profilePic" width="40px" height="50px" src="../
-Images / ProfilePics / LegoChewbaccaProPic.jpg
-">
-
-     */

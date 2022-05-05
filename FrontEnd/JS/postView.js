@@ -1,6 +1,7 @@
 'use strict';
-const url = 'https://localhost:8000';
-//const url = 'https://10.114.32.55/app/';
+
+//const url = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/';
 
 const viewScrollAllPosts = document.querySelector('.viewAllPosts');
 
@@ -25,14 +26,12 @@ const createScrollablePostCard = (posts) => {
 
     const figure = document.createElement('figure').appendChild(img);
 
-
     const divAllPosts = document.createElement('div');
     divAllPosts.classList.add('allPosts');
 
     const p1 = document.createElement('p');
     p1.innerHTML = `${post.PostText}`;
     divAllPosts.appendChild(p1);
-
 
     const getPostCatAndUser = async () => {
       try {
@@ -42,9 +41,11 @@ const createScrollablePostCard = (posts) => {
           },
         };
 
-        const responseCategory = await fetch(url + '/post/categoryname/'+ post.PostId, fetchOptions);
+        const responseCategory = await fetch(
+            url + '/post/categoryname/' + post.PostId, fetchOptions);
         const category = await responseCategory.json();
-        const responseUser = await fetch(url + '/post/creatorname/' + post.PostId, fetchOptions);
+        const responseUser = await fetch(
+            url + '/post/creatorname/' + post.PostId, fetchOptions);
         const user = await responseUser.json();
         postCatAndUser(category, user);
         console.log(category);
@@ -54,7 +55,7 @@ const createScrollablePostCard = (posts) => {
 
     }
     getPostCatAndUser();
-    const postCatAndUser =  (category, user) => {
+    const postCatAndUser = (category, user) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Post category: ${category.CategoryName}`;
       divAllPosts.appendChild(p2);
@@ -68,44 +69,36 @@ const createScrollablePostCard = (posts) => {
     p4.innerHTML = `Likes: ${post.PostLike}`;
     divAllPosts.appendChild(p4);
 
-
     if (userPostView) {
 
-    if (userPostView === null) {
-      const p5 = document.createElement('p');
-      p5.innerHTML = 'You are not logged in';
-      divAllPosts.appendChild(p5);
-    } else if (userPostView.Role === 1 || userPostView.Role === 0) {
+     if (userPostView.Role === 1 || userPostView.Role === 0) {
 
-      const likeButton = document.createElement('button');
-      likeButton.innerText = 'Like';
-      likeButton.classList.add('likeButton');
-      likeButton.addEventListener('click', async (evt) => {
-        evt.preventDefault();
-        try {
-          const fetchOptions = {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: 'Bearer ' + localStorage.getItem('token'),
-            },
-          };
-          const response = await fetch(url + '/post/like/' + post.PostId, fetchOptions);
-          const updatedPost = await response.json();
-          console.log('Post liked', updatedPost);
-          viewAllPosts();
-        } catch (e) {
-          console.log(e.message);
-        }
-      });
-      divAllPosts.appendChild(likeButton);
-    }
+        const likeButton = document.createElement('button');
+        likeButton.innerText = 'Like';
+        likeButton.classList.add('likeButton');
+        likeButton.addEventListener('click', async (evt) => {
+          evt.preventDefault();
+          try {
+            const fetchOptions = {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token'),
+              },
+            };
+            const response = await fetch(url + '/post/like/' + post.PostId,
+                fetchOptions);
+            const updatedPost = await response.json();
+            console.log('Post liked', updatedPost);
+            viewAllPosts();
+          } catch (e) {
+            console.log(e.message);
+          }
+        });
+        divAllPosts.appendChild(likeButton);
+      }
 
-    if (userPostView === 'null') {
-      const p6 = document.createElement('p');
-      p6.innerHTML = 'You are not logged in';
-      divAllPosts.appendChild(p6);
-    } else if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
+    if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
       const deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete';
       deleteButton.classList.add('likeButton');
@@ -119,7 +112,8 @@ const createScrollablePostCard = (posts) => {
               Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
           };
-          const response = await fetch(url + '/post/' + post.PostId, fetchOptions);
+          const response = await fetch(url + '/post/' + post.PostId,
+              fetchOptions);
           const deletePost = await response.json();
           console.log('post deleted', deletePost);
           viewAllPosts();
@@ -129,29 +123,16 @@ const createScrollablePostCard = (posts) => {
       });
       divAllPosts.appendChild(deleteButton);
     }
+  }
 
-    }
-
-    /*
-    const p2 = document.createElement('p');
-    p2.innerHTML = `PostCategory: ${post.Category}`;
-    divAllPosts.appendChild(p2);
-
-    const p3 = document.createElement('p');
-    p3.innerHTML = `Posted by: ${post.CreatedById}`;
-    divAllPosts.appendChild(p3);
-     */
     const divElement = document.createElement('div');
     divElement.classList.add('postCardDiv');
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllPosts);
-    //divElement.appendChild(likeButton);
     viewScrollAllPosts.appendChild(divElement);
-
   });
 }
-
 
 const viewAllPosts = async () => {
   try {
@@ -166,7 +147,6 @@ const viewAllPosts = async () => {
   } catch (e) {
     console.log(e.message);
   }
-
 }
 viewAllPosts();
 

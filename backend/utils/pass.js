@@ -18,21 +18,9 @@ passport.use(new Strategy(
           return done(null, false, {message: 'Incorrect email.'});
         }
 
-        /*
-        if (user.Password !== Password) {
-          return done(null, false, {message: 'Incorrect password.'});
-        }
-
-         */
-
-
-
         if (!await bcrypt.compare(Password, user.Password)) {
           return done(null, false, {message: 'Incorrect password.',user});
         }
-
-
-
 
         delete user.Password;
         return done(null, {...user}, {message: 'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
@@ -41,25 +29,12 @@ passport.use(new Strategy(
       }
     }));
 
-// TODO: consider .env for secret, e.g. secretOrKey: process.env.JWT_SECRET
 passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: 'ncaösdkljvdöhgbvn'
 }, async (jwtPayload, done) => {
-/*
-  try {
-    const user = jwtPayload;
-    return done(null, user);
-  } catch (err) {
-    return done(err);
-  }
-
- */
 
    done(null, jwtPayload);
 }));
-
-
-
 
 module.exports = passport;
