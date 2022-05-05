@@ -112,6 +112,16 @@ const checkToken = (req, res, next) => {
   }
 };
 
+const propic_list_get = async (req, res) => {
+  const pics = await userModel.getAllProfilePics(res);
+  res.json(pics);
+};
+
+const category_list_get = async (req, res) => {
+  const category = await userModel.getAllCategories(res);
+  res.json(category);
+};
+
 module.exports = {
   user_list_get,
   user_get_by_id,
@@ -120,4 +130,6 @@ module.exports = {
   user_delete_by_id,
   user_get_profilepic,
   checkToken,
+  propic_list_get,
+  category_list_get
 };

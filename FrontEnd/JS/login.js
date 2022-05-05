@@ -111,6 +111,36 @@ loginForm.addEventListener('submit', async (evt) => {
   }
 });
 
+const propicList = document.querySelector('.select-propic');
+
+const selectPropic = (profilepics) => {
+  propicList.innerHTML = '';
+  profilepics.forEach((profilepic) => {
+    const option = document.createElement('option');
+    option.value = profilepic.ProfilePicId;
+    option.innerHTML = profilepic.PicName;
+    propicList.appendChild(option);
+  });
+};
+
+const getProfilePics = async () => {
+  try {
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/user/profilepic/all', fetchOptions);
+    const profilePics = await response.json();
+    console.log(profilePics);
+    selectPropic(profilePics);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+getProfilePics()
+
+
 // submit register form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -125,6 +155,8 @@ addUserForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
   alert(json.message);
+
+  addUserForm.reset();
 });
 /*
 // Make a FormData object from the signupForm

@@ -90,10 +90,10 @@ const createScrollablePostCard = (posts) => {
               Authorization: 'Bearer ' + localStorage.getItem('token'),
             },
           };
-          const response = await fetch(url + '/post/like/' + post.PostId,
-              fetchOptions);
+          const response = await fetch(url + '/post/like/' + post.PostId, fetchOptions);
           const updatedPost = await response.json();
-          return updatedPost;
+          console.log('Post liked', updatedPost);
+          viewAllPosts();
         } catch (e) {
           console.log(e.message);
         }
