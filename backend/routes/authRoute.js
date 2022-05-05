@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const {body, sanitizeBody} = require('express-validator')
-const {login, user_post, logout} = require('../Controllers/authController');
+const {login, user_post, logout} = require('../controllers/authController');
 
 router.post('/login', login);
 router.get('/logout', logout);

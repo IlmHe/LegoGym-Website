@@ -2,20 +2,20 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const userRoute = require('./BackEnd/Routes/userRoute');
-const postRoute = require('./BackEnd/Routes/postRoute');
-const gymMoveRoute = require('./BackEnd/Routes/gymMoveRoute');
-const authRoute = require('./BackEnd/Routes/authRoute');
-const passport = require('./BackEnd/utils/pass');
+const userRoute = require('./backend/routes/userRoute');
+const postRoute = require('./backend/routes/postRoute');
+const gymMoveRoute = require('./backend/routes/gymMoveRoute');
+const authRoute = require('./backend/routes/authRoute');
+const passport = require('./backend/utils/pass');
 const session = require("express-session");
 const app = express();
 const port = process.env.PORT || 3000;
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-  require('./BackEnd/utils/production')(app, port);
+  require('./backend/utils/production')(app, port);
 } else {
-  require('./BackEnd/utils/localhost')(app, port);
+  require('./backend/utils/localhost')(app, port);
 }
 app.get('/', (req, res) => {
   res.send('Hello Secure World!');

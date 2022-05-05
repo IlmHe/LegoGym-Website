@@ -5,7 +5,7 @@ const express = require(`express`);
 const multer = require('multer');
 */
 const {body} = require('express-validator');
-const userController = require('../Controllers/userController');
+const userController = require('../controllers/userController');
 const router = express.Router();
 
 router.route('/token')

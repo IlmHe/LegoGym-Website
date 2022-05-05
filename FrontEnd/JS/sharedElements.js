@@ -1,6 +1,6 @@
 'use strict';
-//const urlShared = 'https://localhost:8000';
-const urlShared = 'https://10.114.32.55/app/';
+const urlShared = 'https://localhost:8000';
+//const urlShared = 'https://10.114.32.55/app/';
 
 // get user data
 const user12 = JSON.parse(sessionStorage.getItem('user'));
@@ -71,23 +71,6 @@ const viewProfileDetail = async () => {
   }
 }
 viewProfileDetail()
-
-const getProfilePic = async () => {
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    };
-    const response2 = await fetch(urlShared + '/user/profilepic/'+ user12.UserId, fetchOptions);
-    const profilePic = await response2.json();
-    console.log(profilePic);
-    createProfileNavCard(profilePic);
-  } catch (e) {
-    console.log(e.message);
-  }
-}
-//getProfilePic()
 
     /*
 < a

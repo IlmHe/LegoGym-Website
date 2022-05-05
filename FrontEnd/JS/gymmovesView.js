@@ -1,6 +1,6 @@
 'use strict';
-//const url = 'https://localhost:8000';
-const url = 'https://10.114.32.55/app/';
+const url = 'https://localhost:8000';
+//const url = 'https://10.114.32.55/app/';
 
 const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
@@ -54,6 +54,7 @@ const createScrollableGymMoveCard = (moves) => {
 
     const getMoveCategoryName = async () => {
       try {
+
         const fetchOptions = {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -118,11 +119,13 @@ const createScrollableGymMoveCard = (moves) => {
 
 const viewAllMoves = async () => {
   try {
+
     const fetchOptions = {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
+
     const responseMoves = await fetch(url + '/gymMove/', fetchOptions);
     const moves = await responseMoves.json();
    // const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);

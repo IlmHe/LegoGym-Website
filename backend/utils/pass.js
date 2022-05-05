@@ -5,7 +5,7 @@ const passportJWT = require('passport-jwt');
 const bcrypt = require('bcrypt');
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
-const {getUserLogin} = require('../Models/userModel');
+const {getUserLogin} = require('../models/userModel');
 
 // local strategy for username password login
 passport.use(new Strategy(
@@ -46,7 +46,7 @@ passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: 'ncaösdkljvdöhgbvn'
 }, async (jwtPayload, done) => {
-  /*
+/*
   try {
     const user = jwtPayload;
     return done(null, user);
@@ -54,8 +54,12 @@ passport.use(new JWTStrategy({
     return done(err);
   }
 
-   */done(null, jwtPayload);
+ */
+
+   done(null, jwtPayload);
 }));
+
+
 
 
 module.exports = passport;

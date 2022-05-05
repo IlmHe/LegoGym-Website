@@ -2,7 +2,7 @@
 const express = require(`express`);
 const multer = require('multer');
 const {body} = require('express-validator');
-const postController = require('../Controllers/postController');
+const postController = require('../controllers/postController');
 const router = express.Router();
 
 /*

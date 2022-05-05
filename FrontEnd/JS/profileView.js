@@ -1,8 +1,10 @@
 'use strict';
-//const url = 'https://localhost:8000';
-const url = 'https://10.114.32.55/app/';
+const url = 'https://localhost:8000';
+//const url = 'https://10.114.32.55/app/';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
+
+const postCreation = document.querySelector('.makeANewPost');
 
 // get user data
 const userProView = JSON.parse(sessionStorage.getItem('user'));
@@ -75,6 +77,13 @@ const createProfileInfoCard = (user) => {
     viewProfileInfo.appendChild(divElement);
 }
 
+const addPostForm = document.querySelector('#addPostForm');
+
+const addPostCard = (user) => {
+  addPostForm.innerHTML = '';
+}
+
+
 const viewProfileDetailInProView = async () => {
   try {
     const fetchOptions = {
@@ -91,7 +100,6 @@ const viewProfileDetailInProView = async () => {
 }
 viewProfileDetailInProView()
 
-const addPostForm = document.querySelector('#addPostForm');
 
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
