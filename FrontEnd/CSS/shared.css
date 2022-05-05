@@ -26,11 +26,6 @@ body {
 }
 
 html {
-    /*background: url("../Images/SitePictures/LegoMilleniumFalcon.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
     background-color: rgba(166, 166, 166, 0.19);
 }
 
@@ -46,7 +41,7 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 2px solid rgb(0, 0, 0);
-    height: 20vh;
+    min-height: 20vh;
 }
 
 nav ul {

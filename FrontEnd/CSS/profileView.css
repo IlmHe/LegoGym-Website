@@ -1,119 +1,3 @@
-/*article {
-    height: 60vh;
-    display: flex;
-    flex-direction: row;
-    gap: 60px;
-
-}
-
-.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--lightYellow);
-    border-style: solid;
-    border-color: var(--Yellow);
-    border-width: 2px;
-    flex: 1;
-    margin: 10px;
-}
-
-#moveOfDay {
-    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    width: 100%;
-    height: auto;
-}
-#postPic {
-    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
-    padding: 10px;
-    width: 100%;
-    height: auto;
-}
-
-.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--lightRed);
-    border-style: solid;
-    border-color: var(--Red);
-    border-width: 2px;
-    flex: 2;
-    margin: 10px;
-}
-
-
-#divText {
-    padding: 10px
-}
-#userNameText {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-/*
-* {
-    box-sizing: border-box;
-}
-body {
-}
-html {
-    background: url("FrontEnd/Images/tylypahkapimea.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-main {
-    max-width: 1000px;
-    background-color: rgb(255,255,255);
-    margin: auto;
-    padding: 30px;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid rgb(0,0,0);
-}
-#lego {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    clip-path: polygon(100% 30%, 100% 60%, 0 60%, 0 30%, 18% 30%, 18% 21%, 30% 21%, 30% 30%, 65% 30%, 65% 21%, 76% 21%, 76% 30%);
-}
-
-nav ul {
-    display: flex;
-    list-style-type: none;
-    padding-left: 10px;
-}
-nav ul li {
-    padding: 5px;
-}
-nav li a {
-    text-decoration: none;
-    color: rgb(255,0,0);
-    transition: color 1s;
-}
-a:hover {
-    color: rgb(0,0,0);
-}
-button {
-    background-color: rgba(19, 165, 218, 0.64);
-    width: 60px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    transition: background-color 1s;
-}
-button:hover {
-    background-color: rgb(0,0,255);
-}
- */
 
 .articleWrapper {
     min-height: 80vh;
@@ -131,12 +15,14 @@ form {
     flex-flow: wrap column;
     gap: 15px;
 }
+
 .makeANewPost {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
+
 .profileCardDiv {
     display: flex;
     align-self: center;
@@ -146,10 +32,6 @@ form {
     gap: 20px;
 }
 
-.updateButton {
-    margin-bottom: 20px;
-    display: none;
-}
 .profileViewInfo > img {
     object-fit: scale-down;
     max-width: 250px;
@@ -157,7 +39,6 @@ form {
     clip-path: circle(50% at 50% 50%);
 
 }
-
 
 .profileViewInfo {
     display: flex;
@@ -171,44 +52,6 @@ form {
     max-width: 195px;
 }
 
-
-#moveOfDay {
-    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    width: 100%;
-    height: auto;
-}
-
-#profilePic {
-    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
-    padding: 10px;
-    width: 100%;
-    height: auto;
-}
-
-
-#divText {
-    padding: 10px
-}
-
-#userNameText {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.middle {
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-    align-items: center;
-    min-width: 200px;
-}
-
-.MotD {
-    display: flex;
-    flex-flow: column wrap;
-}
-
 main {
     display: flex;
     flex-flow: column wrap;
@@ -218,19 +61,6 @@ main {
     height: 100%;
 }
 
-.imgMotD {
-    background: no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-    width: 30vw;
-    height: 30vw;
-    min-width: 350px;
-    min-height: 350px;
-    clip-path: circle(50% at 50% 50%);
-
-}
 
 p {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -243,37 +73,10 @@ p {
     .articleWrapper {
         flex-direction: column-reverse;
     }
-
-    .left {
-        border-right: 0;
-        border-top: 2px solid rgb(0, 0, 0);
-    }
-
-    .imgMotD {
-        min-width: 1px;
-        min-height: 1px;
-        width: 50vw;
-        height: 50vw;
-    }
-
-    .MotD {
-        flex-flow: initial;
-        flex-direction: column-reverse;
-        align-items: center;
-    }
 }
 
 @media only screen and (max-width: 400px) {
     main {
         flex-direction: column;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .imgMotD {
-        min-width: 250px;
-        min-height: 250px;
-        width: 50vw;
-        height: 50vw;
     }
 }

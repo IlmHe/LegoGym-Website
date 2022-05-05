@@ -1,109 +1,4 @@
 
-/*article {
-    height: 60vh;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-
-}
-.vasen {
-    background-color: rgb(220, 193, 20);
-    flex: 1;
-}
-.oikea {
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-}
-.yla {
-    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-    background: url("../../../../HTML-CSS-Viikko4/Images/LegoHarry (1).jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-    flex: 3;
-}
-.ala {
-    background-color: rgb(255,255,255);
-    flex: 2;
-}
-
-
-img {
-    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-}
-
-/*
-* {
-    box-sizing: border-box;
-}
-body {
-}
-html {
-    background: url("FrontEnd/Images/tylypahkapimea.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-main {
-    max-width: 1000px;
-    background-color: rgb(255,255,255);
-    margin: auto;
-    padding: 30px;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid rgb(0,0,0);
-}
-#lego {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    clip-path: polygon(100% 30%, 100% 60%, 0 60%, 0 30%, 18% 30%, 18% 21%, 30% 21%, 30% 30%, 65% 30%, 65% 21%, 76% 21%, 76% 30%);
-}
-
-nav ul {
-    display: flex;
-    list-style-type: none;
-    padding-left: 10px;
-}
-nav ul li {
-    padding: 5px;
-}
-nav li a {
-    text-decoration: none;
-    color: rgb(255,0,0);
-    transition: color 1s;
-}
-a:hover {
-    color: rgb(0,0,0);
-}
-button {
-    background-color: rgba(19, 165, 218, 0.64);
-    width: 60px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    transition: background-color 1s;
-}
-button:hover {
-    background-color: rgb(0,0,255);
-}
-
-footer {
-    display: flex;
-    background-color: rgb(128,128,128);
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-}
-*/
-
 main {
     display: flex;
     flex-flow: column wrap;
@@ -113,86 +8,17 @@ main {
     height: 100%;
 }
 
-.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--lightYellow);
-    border-right: 2px solid rgb(0, 0, 0);
-    flex: 1;
-    min-width: 200px;
-}
 
-/*
-.middle {
-    display: flex;
-    flex: 2;
-    flex-direction: column;
-}
-
-.middle > h2 {
-    align-self: center;
-    margin-top: 10px;
-}
-
- */
-
-#moveOfDay {
-    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    shape-outside: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    width: 100%;
-    height: auto;
-}
-
-#profilePic {
-    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
-    padding: 10px;
-    width: 100%;
-    height: auto;
-}
-
-/*
-.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--lightRed);
-    border-style: solid;
-    border-color: var(--Red);
-    border-width: 2px;
-    flex: 1;
-    margin: 10px;
-}
-
- */
-
-
-#divText {
-    padding: 10px
-}
-
-#userNameText {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.middle {
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-    align-items: center;
-    min-width: 200px;
-}
 .allGymMoves {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .moveCardDiv {
     padding: 30px;
 }
+
 .moveCardDiv > img {
     border-radius: 10px;
 }
@@ -204,27 +30,16 @@ main {
     justify-content: center;
     align-items: flex-start;
 }
+
 main {
     height: 100%;
     flex-flow: column nowrap;
 }
+
 .gymmoveText {
     text-align: center;
 }
 
-.imgMotD {
-    background: no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-    width: 30vw;
-    height: 30vw;
-    min-width: 350px;
-    min-height: 350px;
-    clip-path: circle(50% at 50% 50%);
-
-}
 
 p {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -233,160 +48,25 @@ p {
     padding: 5px;
 }
 
-.MotDInfo {
-    display: flex;
-    align-items: center;
-    flex-flow: column wrap;
-}
-.left li {
-    list-style-type: none;
-    padding: 5px;
-}
 
-/*
-:root {
-    --Yellow: rgb(255, 237, 0);
-    --lightYellow: rgb(255, 252, 220);
-    --Red: rgb(227, 0, 11);
-    --lightRed: rgb(245, 170, 174);
-    --Blue: rgb(0, 191, 255);
-}
-
-.textFont {
-    font-family: 'IBM Plex Sans', sans-serif;
-    word-break: break-all;
-}
-
-.headingFont {
-    font-family: 'IBM Plex Serif', serif;
-    word-break: break-all;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-}
-
-html {
-    background: url("FrontEnd/Images/SitePictures/LegoMilleniumFalcon.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-main {
-    max-width: 1000px;
-    background-color: rgb(255, 255, 255);
-    margin: auto;
-    padding: 30px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid rgb(0, 0, 0);
-}
-
-nav ul {
-    display: flex;
-    list-style-type: none;
-    padding-left: 10px;
-}
-
-div ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    padding: 5px;
-}
-
-nav li a {
-    text-decoration: none;
-    color: rgb(255, 0, 0);
-    transition: color 1s;
-}
-
-a:hover {
-    color: rgb(0, 0, 0);
-}
-
-button {
-    background-color: rgba(19, 165, 218, 0.64);
-    width: 60px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    transition: background-color 1s;
-}
-
-button:hover {
-    background-color: rgb(0, 0, 255);
-}
-
-.yla {
-    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-    background: url("Images/LegoHarry (1).jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-    flex: 3;
-}
-
-.ala {
-    background-color: rgb(255, 255, 255);
-    flex: 2;
-
-
-footer {
-    display: flex;
-    background-color: rgb(128, 128, 128);
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.footerP {
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
- */
 @media only screen and (max-width: 500px) {
-    .articleWrapper {
-        flex-direction: column-reverse;
-    }
-    .left {
-        border-right: 0;
-        border-top: 2px solid rgb(0, 0, 0);
-    }
-    .imgMotD {
-        min-width: 1px;
-        min-height: 1px;
-        width: 50vw;
-        height: 50vw;
-    }
+
     .allGymMoves {
         flex-flow: initial;
         flex-direction: column-reverse;
         align-items: center;
     }
 }
+
 @media only screen and (max-width: 400px) {
     main {
         flex-direction: column;
     }
+
     header {
-        flex: 1;
+        flex: 2;
     }
+
     .gymMoveWrapper {
         flex: 3;
     }
