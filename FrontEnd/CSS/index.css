@@ -19,7 +19,9 @@
     min-width: 200px;
 }
 .left > li > img {
+    object-fit: scale-down;
     max-width: 195px;
+    max-height: 195px;
 }
 
 /*
@@ -124,8 +126,11 @@ p {
     flex-flow: column wrap;
 }
 .left li {
+    display: flex;
     list-style-type: none;
     padding: 5px;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*

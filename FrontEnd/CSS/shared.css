@@ -130,6 +130,10 @@ button:hover {
     margin-right: 16px;
     margin-bottom: 0;
 }
+#logoutBtn {
+    margin-right: 16px;
+    margin-bottom: 0;
+}
 
 #navs {
     padding-left: 0;
@@ -171,7 +175,12 @@ footer {
 
 #navLinks {
     display: flex;
-    height: 175px;
+    justify-content: center;
+    flex-direction: column;
+}
+#navLinksRight {
+    padding-top: 16px;
+    display: flex;
     justify-content: center;
     flex-direction: column;
 }
@@ -192,6 +201,9 @@ footer {
     }
 
     #loginBtn {
+        display: none;
+    }
+    #logoutBtn {
         display: none;
     }
 

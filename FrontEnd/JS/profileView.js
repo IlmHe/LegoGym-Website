@@ -38,8 +38,8 @@ const createProfileInfoCard = (user) => {
 
     const img = document.createElement('img');
     img.src =  profilePic.FilePath;
-    img.width = 160;
-    img.height = 160;
+    img.width = img.naturalWidth;
+    img.height = img.naturalHeight;
     img.alt = `Image of users profile picture`;
     img.classList.add('resp');
 
