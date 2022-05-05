@@ -101,7 +101,6 @@ button {
     padding: 0.46em 1.6em;
     border: 2px solid var(--Blue);
     margin: 0 0.2em 0.2em 0;
-    border-radius: 0.12em;
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
