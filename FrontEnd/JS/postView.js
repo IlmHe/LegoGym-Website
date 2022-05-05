@@ -10,17 +10,14 @@ const createScrollablePostCard = (posts) => {
 
   // Headline for recent posts
   const h2 = document.createElement('h2');
-  h2.classList.add('headingFont');
-  h2.innerText = 'Posts';
   viewScrollAllPosts.appendChild(h2);
 
   posts.forEach((post) => {
     // create li with DOM methods
     const img = document.createElement('img');
     img.src = url + '/' + post.PostImage;
-    //TODO change size of image later
-    img.width = 160;
-    img.height = 160;
+    img.width = img.naturalWidth;
+    img.height = img.naturalHeight;
     img.alt = `Image of a post created by: ${post.CreatedById}`;
     img.classList.add('resp');
 
