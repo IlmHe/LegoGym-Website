@@ -31,6 +31,7 @@ const headerText = `
 </ul>
 </nav>
 <p class="profileNav"> </p>
+<button class="headingFont" onclick="location.href='logout.html'" id="logoutBtn">Logout</button>
 
 <button class="headingFont" onclick="location.href='registerView.html'" id="loginBtn">Login</button>
 `;
@@ -71,6 +72,7 @@ const viewProfileDetail = async () => {
   }
 }
 viewProfileDetail()
+
 
     /*
 < a

@@ -35,8 +35,8 @@ const getPostbyId = async (id, res) => {
  */
 const createPost = async (post, res) => {
   try {
-    const [rows] = await promisePool.query(`INSERT INTO Posts(PostId, PostText, PostImage, Category, CreatedById, PostComment, PostLike, PostDate) VALUES  (?,?,?,?,?,?,?,?)`,
-        [null, post.PostText, post.filename, post.Category, post.CreatedById, null, 1, post.PostDate]);
+    const [rows] = await promisePool.query(`INSERT INTO Posts(PostId, PostText, PostImage, Category, CreatedById, PostLike, PostDate) VALUES  (?,?,?,?,?,?,?)`,
+        [null, post.PostText, post.filename, post.Category, post.CreatedById, 0, post.PostDate]);
      //   [post.PostText, post.PostImage, post.Category, post.CreatedById]);
     console.log(`Post model insert`, rows, rows[0]);
     return rows.insertId;
