@@ -1,5 +1,5 @@
 'use strict';
-const pool = require('../Database/db');
+const pool = require('../database/db');
 const promisePool = pool.promise();
 
 /**

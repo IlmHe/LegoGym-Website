@@ -4,8 +4,10 @@ const url = 'https://localhost:8000';
 
 const viewProfileInfo = document.querySelector('.profileViewInfo');
 
-// get user data for admin check
-const user12 = JSON.parse(sessionStorage.getItem('user'));
+const postCreation = document.querySelector('.makeANewPost');
+
+// get user data
+const userProView = JSON.parse(sessionStorage.getItem('user'));
 
 const createProfileInfoCard = (user) => {
     viewProfileInfo.innerHTML = '';
@@ -75,23 +77,29 @@ const createProfileInfoCard = (user) => {
     viewProfileInfo.appendChild(divElement);
 }
 
-const viewProfileDetail = async () => {
+const addPostForm = document.querySelector('#addPostForm');
+
+const addPostCard = (user) => {
+  addPostForm.innerHTML = '';
+}
+
+
+const viewProfileDetailInProView = async () => {
   try {
     const fetchOptions = {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/user/' + user12.UserId, fetchOptions);
+    const response = await fetch(url + '/user/' + userProView.UserId, fetchOptions);
     const user = await response.json();
     createProfileInfoCard(user);
   } catch (e) {
     console.log(e.message);
   }
 }
-viewProfileDetail()
+viewProfileDetailInProView()
 
-const addPostForm = document.querySelector('#addPostForm');
 
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();

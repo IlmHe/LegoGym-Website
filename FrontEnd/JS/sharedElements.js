@@ -1,4 +1,9 @@
 'use strict';
+const urlShared = 'https://localhost:8000';
+//const urlShared = 'https://10.114.32.55/app/';
+
+// get user data
+const user12 = JSON.parse(sessionStorage.getItem('user'));
 
 /*
  * Populate header
@@ -25,7 +30,7 @@ const headerText = `
 <button> <a class="navBtn" href="gymmovesView.html"> Gym Moves</a> </button>
 </ul>
 </nav>
-<p class="profileNav"><a id="profileLink" href="profileView.html"> LegoLover123</a> <img class="profilePic" width="40px" height="50px" src="../Images/ProfilePics/LegoChewbaccaProPic.jpg"> </p>
+<p class="profileNav"> </p>
 
 <button class="headingFont" onclick="location.href='registerView.html'" id="loginBtn">Login</button>
 `;
@@ -42,3 +47,37 @@ const footerText = `
 `;
 
 document.querySelector('footer').innerHTML = footerText;
+
+const profileNav = document.querySelector('.profileNav');
+
+const createProfileNavCard = (user, profilePic) => {
+  profileNav.innerHTML = `<a id="profileLink" href="profileView.html"> ${user.Username} </a> <img class="profilePic" width="40px" height="50px" src=${profilePic.FilePath}> `;
+};
+
+const viewProfileDetail = async () => {
+  try {
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(urlShared + '/user/' + user12.UserId, fetchOptions);
+    const user = await response.json();
+    const response2 = await fetch(urlShared + '/user/profilepic/'+ user12.UserId, fetchOptions);
+    const profilePic = await response2.json();
+    createProfileNavCard(user, profilePic);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+viewProfileDetail()
+
+    /*
+< a
+id = "profileLink"
+href = "profileView.html" > LegoLover123 <
+    /a> <img className="profilePic" width="40px" height="50px" src="../
+Images / ProfilePics / LegoChewbaccaProPic.jpg
+">
+
+     */

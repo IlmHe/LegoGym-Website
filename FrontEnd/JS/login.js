@@ -126,3 +126,17 @@ addUserForm.addEventListener('submit', async (evt) => {
   const json = await response.json();
   alert(json.message);
 });
+/*
+// Make a FormData object from the signupForm
+const formedSignupForm = new FormData(signupForm);
+formedSignupForm.delete('re-enter-password');
+// Create the options for posting the data
+const fetchOptions = {
+  method: 'POST',
+  headers: {},
+  body: formedSignupForm,
+};
+const response = await fetch(url + '/auth/signup', fetchOptions);
+const signupJsonResponse = await response.json();
+
+ */

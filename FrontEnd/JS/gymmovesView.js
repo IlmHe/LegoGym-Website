@@ -52,6 +52,7 @@ const createScrollableGymMoveCard = (moves) => {
 
     const getMoveCategoryName = async () => {
       try {
+
         const fetchOptions = {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -116,11 +117,13 @@ const createScrollableGymMoveCard = (moves) => {
 
 const viewAllMoves = async () => {
   try {
+
     const fetchOptions = {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
+
     const responseMoves = await fetch(url + '/gymMove/', fetchOptions);
     const moves = await responseMoves.json();
    // const responseCategory = await fetch(url + '/gymMove/categoryname/'+7, fetchOptions);

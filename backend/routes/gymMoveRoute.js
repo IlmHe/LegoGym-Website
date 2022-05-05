@@ -4,7 +4,7 @@ const express = require(`express`);
 const multer = require('multer');
 */
 const {body} = require('express-validator');
-const gymMoveController = require('../Controllers/gymMoveController');
+const gymMoveController = require('../controllers/gymMoveController');
 const router = express.Router();
 
 /*

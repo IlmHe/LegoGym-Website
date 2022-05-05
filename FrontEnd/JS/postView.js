@@ -62,6 +62,31 @@ const createScrollablePostCard = (posts) => {
       divAllPosts.appendChild(p3);
     }
 
+    const p4 = document.createElement('p');
+    p4.innerHTML = `Likes: ${post.PostLike}`;
+    divAllPosts.appendChild(p4);
+
+    const likeButton = document.createElement('button');
+    likeButton.innerText = 'Like';
+    likeButton.classList.add('likeButton');
+    likeButton.addEventListener('click', async (evt) => {
+      evt.preventDefault();
+      try {
+        const fetchOptions = {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+        };
+        const response = await fetch(url + '/post/like/' + post.PostId, fetchOptions);
+        const updatedPost = await response.json();
+        return updatedPost;
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
+
     /*
     const p2 = document.createElement('p');
     p2.innerHTML = `PostCategory: ${post.Category}`;
@@ -76,6 +101,7 @@ const createScrollablePostCard = (posts) => {
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllPosts);
+    divElement.appendChild(likeButton);
     viewScrollAllPosts.appendChild(divElement);
 
   });
