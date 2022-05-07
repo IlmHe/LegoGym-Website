@@ -9,21 +9,4 @@
     return;
   }
 
-  // check if token valid
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/user/token', fetchOptions);
-    if (!response.ok) {
-    } else {
-      const json = await response.json();
-      sessionStorage.setItem('user', JSON.stringify(json.user));
-      console.log('user', json)
-    }
-  } catch (e) {
-    console.log(e.message);
-  }
 })();
