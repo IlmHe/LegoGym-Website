@@ -43,10 +43,10 @@ const icons = document.querySelector("#navLinksRight");
 if (user) {
   console.log("user", user)
   //login and logout images a little scuffed, but they add character :)
-  icons.style.background = "url(../images/sitepictures/logout.png) center center no-repeat";
+  icons.style.background = "url(../Images/SitePictures/logout.png) center center no-repeat";
 } else {
   console.log("nouser", user)
-  icons.style.background = "url(../images/sitepictures/login.png) center center no-repeat";
+  icons.style.background = "url(../Images/SitePictures/login.png) center center no-repeat";
 }
 const imgClick = () => {
   if (user) {
