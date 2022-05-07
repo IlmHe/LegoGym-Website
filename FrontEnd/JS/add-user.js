@@ -1,7 +1,7 @@
 
 'use strict';
-const url = 'https://localhost:8000';
-//const url = 'https://10.114.32.55/app/'; // change url when uploading to server
+//const url = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/'; // change url when uploading to server
 
 const addUserForm = document.querySelector('#addUserForm');
 
