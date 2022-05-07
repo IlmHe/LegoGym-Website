@@ -1,4 +1,5 @@
 'use strict';
+
 //const urlShared = 'https://localhost:8000';
 const urlShared = 'https://10.114.32.55/app/';
 
@@ -6,9 +7,8 @@ const urlShared = 'https://10.114.32.55/app/';
 const user12 = JSON.parse(sessionStorage.getItem('user'));
 const user = sessionStorage.getItem("user");
 
-/*
- * Populate header
- */
+
+//Populate header
 const headerText = `
 <section class="top-nav">
     <input id="menu-toggle" type="checkbox" />
@@ -35,8 +35,8 @@ const headerText = `
 </nav>
 `;
 
-
 document.querySelector('header').innerHTML = headerText;
+
 
 const icons = document.querySelector("#navLinksRight");
 
@@ -56,6 +56,8 @@ const imgClick = () => {
   }
 }
 icons.addEventListener("click", imgClick);
+
+
 /*
  * Populate footer
  */
@@ -90,15 +92,6 @@ const viewProfileDetail = async () => {
   } catch (e) {
     console.log(e.message);
   }
+
 };
 viewProfileDetail();
-
-/*
-< a
-id = "profileLink"
-href = "profileView.html" > LegoLover123 <
-/a> <img className="profilePic" width="40px" height="50px" src="../
-Images / ProfilePics / LegoChewbaccaProPic.jpg
-">
-
- */

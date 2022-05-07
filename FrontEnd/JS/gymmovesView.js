@@ -7,8 +7,8 @@ const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 const userGymMovesView = JSON.parse(sessionStorage.getItem('user'));
 
 
-
 //Adds gym moves(parameter) to the html page
+
 const createScrollableGymMoveCard = (moves) => {
 
   viewScrollAllGymMoves.innerHTML = '';
@@ -16,7 +16,6 @@ const createScrollableGymMoveCard = (moves) => {
   // Headline for recent posts
   const h2 = document.createElement('h2');
   viewScrollAllGymMoves.appendChild(h2);
-
 
   moves.forEach((move) => {
 
@@ -40,7 +39,6 @@ const createScrollableGymMoveCard = (moves) => {
     //Gets category name for gym move
     const getMoveCategoryName = async () => {
       try {
-
         const fetchOptions = {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -53,7 +51,6 @@ const createScrollableGymMoveCard = (moves) => {
       } catch (e) {
         console.log(e.message);
       }
-
     }
     getMoveCategoryName();
 
@@ -61,7 +58,6 @@ const createScrollableGymMoveCard = (moves) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Move category: ${category.CategoryName}`;
       divAllMoves.appendChild(p2);
-
     }
 
     const p3 = document.createElement('p');
@@ -91,9 +87,7 @@ const createScrollableGymMoveCard = (moves) => {
           console.log(e.message);
         }
       });
-
       divAllMoves.appendChild(likeButton);
-
     }
 
     const divElement = document.createElement('div');
@@ -121,6 +115,6 @@ const viewAllMoves = async () => {
   } catch (e) {
     console.log(e.message);
   }
-
 }
+
 viewAllMoves();

@@ -1,5 +1,6 @@
 
 'use strict';
+
 //const url = 'https://localhost:8000';
 const url = 'https://10.114.32.55/app/'; // change url when uploading to server
 
@@ -63,7 +64,6 @@ const getProfilePics = async () => {
 getProfilePics()
 
 
-
 // submit register form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -80,4 +80,5 @@ addUserForm.addEventListener('submit', async (evt) => {
   alert(json.message);
 
   addUserForm.reset();
+
 });

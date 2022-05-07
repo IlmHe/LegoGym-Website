@@ -1,9 +1,8 @@
 'use strict';
+
+
 //const url = 'https://localhost:8000';
 const url = 'https://10.114.32.55/app/';
-/*
- *Populate right div
- */
 
 // select existing html elements
 const ul = document.querySelector('.left');
@@ -11,10 +10,9 @@ const ul = document.querySelector('.left');
 // select existing html elements middle
 const articleMiddle = document.querySelector('.middle');
 
-// create cat cards
+// create post card
 const createPostCards = (posts) => {
 
-  // clear ul
   ul.innerHTML = '';
 
   // Headline for recent posts
@@ -41,6 +39,7 @@ const createPostCards = (posts) => {
 
     //Gets two recent posts from db
     const recentPostAndCategory = async () => {
+
       try {
         const fetchOptions = {
           headers: {
@@ -57,7 +56,6 @@ const createPostCards = (posts) => {
       } catch (e) {
         console.log(e.message);
       }
-
     }
 
     //Puts two recent posts into index.html
@@ -72,7 +70,7 @@ const createPostCards = (posts) => {
       li.appendChild(p2);
       li.appendChild(p3);
     }
-    
+
     li.appendChild(figure);
     li.appendChild(p1);
     ul.appendChild(li);
@@ -95,9 +93,7 @@ const createPostCards = (posts) => {
         console.log(e.message);
       }
     };
-
     getPost();
-
 
     // Create MoveoftheDay card
 const createMoveOfTheDayCard = (move) => {
@@ -127,8 +123,8 @@ const createMoveOfTheDayCard = (move) => {
   p1.innerHTML = `MoveName: ${move.MoveName}`;
   divMotD.appendChild(p1);
 
-  //Gets category for move of the day
 
+  //Gets category for move of the day
   const getMoveCategoryName = async () => {
     try {
       const fetchOptions = {
@@ -152,11 +148,7 @@ const createMoveOfTheDayCard = (move) => {
     const p2 = document.createElement('p');
     p2.innerHTML = `Move category: ${category.CategoryName}`;
     divMotD.appendChild(p2);
-
-
   }
-
-
 
   const p3 = document.createElement('p');
   p3.innerHTML = `Likes: ${move.Likes}`;
@@ -168,7 +160,6 @@ const createMoveOfTheDayCard = (move) => {
   article.appendChild(figure);
   article.appendChild(divMotD);
   articleMiddle.appendChild(article);
-
 }
 
 // AJAX call

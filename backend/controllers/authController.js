@@ -1,12 +1,11 @@
 'use strict';
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const {createUser} = require('../models/userModel');
 
-
 const login = (req, res, next) => {
-  // TODO: add passport authenticate
   passport.authenticate('local', {session: false}, (err, user, info) => {
     console.log('user', user);
     if (err || !user) {
@@ -52,9 +51,7 @@ const user_post = async (req, res) => {
   }
 };
 
-
 const logout = (req, res) => {
-  //req.logout();
   res.json({message: 'logged out'});
 };
 

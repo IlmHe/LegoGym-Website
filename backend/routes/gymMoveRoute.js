@@ -1,15 +1,9 @@
 'use strict';
 const express = require(`express`);
-/*
-const multer = require('multer');
-*/
-const {body} = require('express-validator');
 const gymMoveController = require('../controllers/gymMoveController');
 const router = express.Router();
 
-/*
-* Gym move routes
- */
+//Gym move routes
 
 router.route(`/`)
 .get(gymMoveController.gymMove_list_get)
@@ -30,4 +24,5 @@ router.route('/like/:id')
 
 router.route('/categoryname/:id')
     .get(gymMoveController.gymMove_get_category_name);
+
 module.exports = router;
