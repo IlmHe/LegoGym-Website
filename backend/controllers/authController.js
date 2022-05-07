@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const {createUser} = require('../models/userModel');
 
+// User login
 const login = (req, res, next) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
     console.log('user', user);
@@ -26,6 +27,7 @@ const login = (req, res, next) => {
   })(req, res, next);
 };
 
+// User registration, password hashing and saving to database
 const user_post = async (req, res) => {
   console.log(`user controller post body`, req.body);
   const hash = await bcrypt.hash(req.body.password, 12);
@@ -51,6 +53,7 @@ const user_post = async (req, res) => {
   }
 };
 
+// User logout
 const logout = (req, res) => {
   res.json({message: 'logged out'});
 };

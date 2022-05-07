@@ -10,6 +10,8 @@ const passport = require('./backend/utils/pass');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+//Checks which port is used, based on the environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
   require('./backend/utils/production')(app, port);

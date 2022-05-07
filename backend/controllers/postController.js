@@ -69,12 +69,14 @@ const post_delete_by_id = async (req, res) => {
   res.json({message: `post deleted ${postDeleted}`});
 };
 
+// Function to get recent posts
 const post_get_recent = async (req, res) => {
   console.log(`post controller get recent`);
   const posts = await postModel.getRecentPosts(res);
   res.json(posts);
 };
 
+//
 const post_get_by_category = async (req, res) => {
   console.log(`post controller get by category`, req.params.category);
   const posts = await postModel.getPostsByCategory(req.params.category, res);

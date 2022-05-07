@@ -52,6 +52,7 @@ const gymMove_delete_by_id = async (req, res) => {
   res.json({message: `gymMove deleted ${gymMoveDeleted}`});
 };
 
+// Function to get a random gym move
 const gymMove_get_moveoftheDay = async (req, res) => {
   console.log(`gymMove controller get move of the day`);
   const gymMove = await gymMoveModel.getGymMoveofTheDay(res);
@@ -59,6 +60,7 @@ const gymMove_get_moveoftheDay = async (req, res) => {
   res.json(gymMove || {});
 };
 
+// Function to get gym move by category
 const gymMove_get_By_category = async (req, res) => {
   console.log(`gymMove controller get by category`, req.params.category);
   const gymMove = await gymMoveModel.getGymMovebyCategory(req.params.category, res);
@@ -66,6 +68,7 @@ const gymMove_get_By_category = async (req, res) => {
   res.json(gymMove || {});
 };
 
+// Function to update gym move likes
 const gymMove_update_Likes = async (req, res) => {
   console.log(`gymMove controller update likes`, req.params.id);
   const gymMove = await gymMoveModel.updateGymMoveLikes(req.params.id, res);
@@ -73,6 +76,7 @@ const gymMove_update_Likes = async (req, res) => {
   res.json(gymMove || {});
 };
 
+// Function to get category name
 const gymMove_get_category_name = async (req, res) => {
   console.log(`gymMove controller get category name`, req.params.id);
   const gymMove = await gymMoveModel.getGymMoveCategoryName(req.params.id, res);
