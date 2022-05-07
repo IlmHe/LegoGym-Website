@@ -1,3 +1,4 @@
+
 'use strict';
 
 //const url = 'https://localhost:8000';
@@ -7,7 +8,7 @@ const url = 'https://10.114.32.55/app/'; // change url when uploading to server
 const loginForm = document.querySelector('#login-form');
 const addUserForm = document.querySelector('#addUserForm');
 
-// login
+// Handles login
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(loginForm);
@@ -33,7 +34,7 @@ loginForm.addEventListener('submit', async (evt) => {
 });
 
 const propicList = document.querySelector('.select-propic');
-
+//appends profile pic to html
 const selectPropic = (profilepics) => {
   propicList.innerHTML = '';
   profilepics.forEach((profilepic) => {
@@ -44,6 +45,7 @@ const selectPropic = (profilepics) => {
   });
 };
 
+//gets profile pic from db
 const getProfilePics = async () => {
   try {
     const fetchOptions = {
@@ -61,6 +63,7 @@ const getProfilePics = async () => {
 }
 getProfilePics()
 
+
 // submit register form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -77,4 +80,5 @@ addUserForm.addEventListener('submit', async (evt) => {
   alert(json.message);
 
   addUserForm.reset();
+
 });

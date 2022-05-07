@@ -17,6 +17,8 @@ main {
 
 .moveCardDiv {
     padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 25px;
 }
 
 .moveCardDiv > img {

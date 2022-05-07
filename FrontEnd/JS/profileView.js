@@ -1,4 +1,7 @@
 'use strict';
+//const url = 'https://localhost:8000';
+const url = 'https://10.114.32.55/app/';
+
 
 //const url = 'https://localhost:8000';
 const url = 'https://10.114.32.55/app/';
@@ -16,6 +19,7 @@ const createProfileInfoCard = (user) => {
   h2.innerText = 'User details';
   viewProfileInfo.appendChild(h2);
 
+  //get profilepic from db
   const getProfilePic = async () => {
     try {
       const fetchOptions = {
@@ -34,6 +38,7 @@ const createProfileInfoCard = (user) => {
   };
   getProfilePic();
 
+  //populate profile pic into html
   const profilePicCard = (profilePic) => {
 
     const img = document.createElement('img');
@@ -70,6 +75,8 @@ const createProfileInfoCard = (user) => {
 };
 
 const categoryList = document.querySelector('.select-category');
+
+
 const addPostCard = (categories) => {
   categoryList.innerHTML = '';
 
@@ -91,6 +98,7 @@ creatorId.appendChild(option);
 
 const postForm = document.querySelector('#addPostForm');
 
+//checks who you are, then shows correct profile. proview is token
 const viewProfileDetailInProView = async () => {
   try {
     const fetchOptions = {

@@ -23,6 +23,10 @@
     max-width: 195px;
     max-height: 195px;
 }
+.left > li {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
+}
 
 #moveOfDay {
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
@@ -46,6 +50,9 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+.h2Text {
+margin-bottom: 25px;
+}
 
 .middle {
     display: flex;
@@ -58,6 +65,9 @@
 .MotD {
     display: flex;
     flex-flow: column wrap;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 30px 30px 0 30px;
+    margin-bottom: 20px;
 }
 main {
     display: flex;
