@@ -32,11 +32,6 @@ const headerText = `
 </nav>
 <p class="profileNav"> </p>
 <nav id="navLinksRight">
-
-<button class="headingFont" onclick="location.href='logout.html'" id="logoutBtn">Logout</button>
-
-<button class="headingFont" onclick="location.href='registerView.html'" id="loginBtn">Login</button>
-
 </nav>
 `;
 
