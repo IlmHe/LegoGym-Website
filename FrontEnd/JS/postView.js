@@ -6,6 +6,7 @@ const viewScrollAllPosts = document.querySelector('.viewAllPosts');
 
 const userPostView = JSON.parse(sessionStorage.getItem('user'));
 
+//populates page with posts
 const createScrollablePostCard = (posts) => {
 
   viewScrollAllPosts.innerHTML = '';
@@ -33,8 +34,8 @@ const createScrollablePostCard = (posts) => {
     p1.innerHTML = `${post.PostText}`;
     divAllPosts.appendChild(p1);
 
-
-    const getPostCatAndUser = async () => {
+    //fetch poster data
+    const getCategoryAndUser = async () => {
       try {
         const fetchOptions = {
           headers: {
@@ -46,15 +47,17 @@ const createScrollablePostCard = (posts) => {
         const category = await responseCategory.json();
         const responseUser = await fetch(url + '/post/creatorname/' + post.PostId, fetchOptions);
         const user = await responseUser.json();
-        postCatAndUser(category, user);
+        postCategoryAndUser(category, user);
         console.log(category);
       } catch (e) {
         console.log(e.message);
       }
 
     }
-    getPostCatAndUser();
-    const postCatAndUser =  (category, user) => {
+    getCategoryAndUser();
+
+    //populates poster data
+    const postCategoryAndUser =  (category, user) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Post category: ${category.CategoryName}`;
       divAllPosts.appendChild(p2);
@@ -69,12 +72,15 @@ const createScrollablePostCard = (posts) => {
     divAllPosts.appendChild(p4);
 
 
+    //if logged in
     if (userPostView) {
 
     if (userPostView === null) {
       const p5 = document.createElement('p');
       p5.innerHTML = 'You are not logged in';
       divAllPosts.appendChild(p5);
+
+      //checks if admin
     } else if (userPostView.Role === 1 || userPostView.Role === 0) {
 
       const likeButton = document.createElement('button');
@@ -105,6 +111,8 @@ const createScrollablePostCard = (posts) => {
       const p6 = document.createElement('p');
       p6.innerHTML = 'You are not logged in';
       divAllPosts.appendChild(p6);
+
+      //if you created post or are admin, you can delete posts
     } else if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
       const deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete';
@@ -132,27 +140,17 @@ const createScrollablePostCard = (posts) => {
 
     }
 
-    /*
-    const p2 = document.createElement('p');
-    p2.innerHTML = `PostCategory: ${post.Category}`;
-    divAllPosts.appendChild(p2);
-
-    const p3 = document.createElement('p');
-    p3.innerHTML = `Posted by: ${post.CreatedById}`;
-    divAllPosts.appendChild(p3);
-     */
     const divElement = document.createElement('div');
     divElement.classList.add('postCardDiv');
 
     divElement.appendChild(figure);
     divElement.appendChild(divAllPosts);
-    //divElement.appendChild(likeButton);
     viewScrollAllPosts.appendChild(divElement);
 
   });
 }
 
-
+//gets all posts from db
 const viewAllPosts = async () => {
   try {
     const fetchOptions = {

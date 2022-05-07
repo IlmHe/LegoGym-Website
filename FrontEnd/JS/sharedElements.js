@@ -4,6 +4,7 @@ const urlShared = 'https://localhost:8000';
 
 // get user data
 const user12 = JSON.parse(sessionStorage.getItem('user'));
+const user = sessionStorage.getItem("user");
 
 /*
  * Populate header
@@ -19,8 +20,6 @@ const headerText = `
       <li onclick="location.href='postView.html'">Posts</li>
       <li onclick="location.href='gymmovesView.html'">Gym moves</li>
       <li onclick="location.href='profileView.html'">Profile</li>
-      <li onclick="location.href='registerView.html'">Login</li>
-      <li onclick="location.href='logout.html'">Logout</li>
     </ul>
   </section>
 
@@ -33,15 +32,30 @@ const headerText = `
 </nav>
 <p class="profileNav"> </p>
 <nav id="navLinksRight">
-<button class="headingFont" onclick="location.href='logout.html'" id="logoutBtn">Logout</button>
-
-<button class="headingFont" onclick="location.href='registerView.html'" id="loginBtn">Login</button>
 </nav>
 `;
 
 
 document.querySelector('header').innerHTML = headerText;
 
+const icons = document.querySelector("#navLinksRight");
+
+if (user) {
+  console.log("user", user)
+  //login and logout images a little scuffed, but they add character :)
+  icons.style.background = "url(../images/sitepictures/logout.png) center center no-repeat";
+} else {
+  console.log("nouser", user)
+  icons.style.background = "url(../images/sitepictures/login.png) center center no-repeat";
+}
+const imgClick = () => {
+  if (user) {
+    location.href = "logout.html";
+  } else {
+    location.href = "registerView.html";
+  }
+}
+icons.addEventListener("click", imgClick);
 /*
  * Populate footer
  */
@@ -66,24 +80,25 @@ const viewProfileDetail = async () => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    const response = await fetch(urlShared + '/user/' + user12.UserId, fetchOptions);
+    const response = await fetch(urlShared + '/user/' + user12.UserId,
+        fetchOptions);
     const user = await response.json();
-    const response2 = await fetch(urlShared + '/user/profilepic/'+ user12.UserId, fetchOptions);
+    const response2 = await fetch(
+        urlShared + '/user/profilepic/' + user12.UserId, fetchOptions);
     const profilePic = await response2.json();
     createProfileNavCard(user, profilePic);
   } catch (e) {
     console.log(e.message);
   }
-}
-viewProfileDetail()
+};
+viewProfileDetail();
 
-
-    /*
+/*
 < a
 id = "profileLink"
 href = "profileView.html" > LegoLover123 <
-    /a> <img className="profilePic" width="40px" height="50px" src="../
+/a> <img className="profilePic" width="40px" height="50px" src="../
 Images / ProfilePics / LegoChewbaccaProPic.jpg
 ">
 
-     */
+ */
