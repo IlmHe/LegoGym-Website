@@ -63,6 +63,7 @@ const deletePost = async (id, res) => {
   }
 };
 
+// Gets recent posts from the database, else returns an error
 const getRecentPosts = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts ORDER BY PostId DESC LIMIT 2');
@@ -74,6 +75,7 @@ const getRecentPosts = async (res) => {
   }
 };
 
+//Gets posts by category from the database, else returns an error
 const getPostsByCategory = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts WHERE Category = ?', [category]);
@@ -85,6 +87,7 @@ const getPostsByCategory = async (category, res) => {
   }
 };
 
+//Gets posts by creator from the database, else returns an error
 const getPostsCreatedByUser = async (userId, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Posts WHERE CreatedById = ?', [userId]);
@@ -96,6 +99,7 @@ const getPostsCreatedByUser = async (userId, res) => {
   }
 };
 
+// Update post likes by id, else returns an error
 const postLiked = async (postId, res) => {
   try {
     const [rows] = await promisePool.query('UPDATE Posts SET PostLike = PostLike+1 WHERE PostId = ?', [postId]);
@@ -108,6 +112,7 @@ const postLiked = async (postId, res) => {
   }
 };
 
+// Gets posts category name from the database, else returns an error
 const getPostsByCategoryName = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT CategoryName FROM Category RIGHT JOIN Posts ON Category.CategoryId = Posts.Category WHERE Posts.PostId = ?', [category]);
@@ -119,6 +124,7 @@ const getPostsByCategoryName = async (category, res) => {
   }
 };
 
+// Gets posts creator naem from the database, else returns an error
 const getPostsCreatorName = async (userId, res) => {
   try {
     const [rows] = await promisePool.query('SELECT UserName FROM Users RIGHT JOIN Posts ON Users.UserId = Posts.CreatedById WHERE Posts.PostId = ?', [userId]);

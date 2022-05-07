@@ -76,25 +76,28 @@ const post_get_recent = async (req, res) => {
   res.json(posts);
 };
 
-//
+// Function to get posts by category
 const post_get_by_category = async (req, res) => {
   console.log(`post controller get by category`, req.params.category);
   const posts = await postModel.getPostsByCategory(req.params.category, res);
   res.json(posts);
 };
 
+// Function to get posts created by someone
 const post_get_by_author = async (req, res) => {
   console.log(`post controller get by author`, req.params.author);
   const posts = await postModel.getPostsCreatedByUser(req.params.author, res);
   res.json(posts);
 };
 
+// Function to update post likes
 const post_update_likes = async (req, res) => {
   console.log(`post controller update likes`, req.params.id);
   const post = await postModel.postLiked(req.params.id, res);
   res.json(post);
 };
 
+// Function get posts category name
 const post_get_category_name = async (req, res) => {
   console.log(`post controller get category name`, req.params.id);
   const posts = await postModel.getPostsByCategoryName(req.params.id, res);
@@ -102,6 +105,7 @@ const post_get_category_name = async (req, res) => {
   res.json(posts || {});
 };
 
+// Function to get creator of post
 const post_get_creator_name = async (req, res) => {
   console.log(`post controller get creator name`, req.params.id);
   const posts = await postModel.getPostsCreatorName(req.params.id, res);

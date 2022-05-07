@@ -90,6 +90,7 @@ const deleteUser = async (id, res) => {
   }
 };
 
+// Gets profile pic for a user from the database, else returns an error
 const getProfilePic = async (id, res) => {
   try {
     const [rows] = await promisePool.query('SELECT FilePath FROM ProfilePics RIGHT JOIN Users ON ProfilePics.ProfilePicId = Users.ProfilePic WHERE Users.UserId = ?', [id]);
@@ -101,6 +102,7 @@ const getProfilePic = async (id, res) => {
   }
 };
 
+// Gets user login info from the database, else returns an error
 const getUserLogin = async (params) => {
   try {
     console.log(params);
@@ -113,6 +115,7 @@ const getUserLogin = async (params) => {
   }
 };
 
+// Gets all profile pics from the database, else returns an error
 const getAllProfilePics = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM ProfilePics');
@@ -124,6 +127,7 @@ const getAllProfilePics = async (res) => {
   }
 };
 
+// Gets all categories from the database, else returns an error
 const getAllCategories = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM Category');

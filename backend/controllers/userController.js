@@ -64,6 +64,7 @@ const user_delete_by_id = async (req, res) => {
   res.json({message: `user deleted ${userDeleted}`});
 };
 
+// Function to get users profilepicture
 const user_get_profilepic = async (req, res) => {
   console.log(`user controller get profile pic`, req.params.id);
   const user = await userModel.getProfilePic(req.params.id, res);
@@ -71,6 +72,7 @@ const user_get_profilepic = async (req, res) => {
   res.json(user || {});
 };
 
+// Function to check token
 const checkToken = (req, res, next) => {
   if (!req.user) {
     next(new Error('token not valid'));
@@ -79,11 +81,13 @@ const checkToken = (req, res, next) => {
   }
 };
 
+// Function to get all profilepictures
 const propic_list_get = async (req, res) => {
   const pics = await userModel.getAllProfilePics(res);
   res.json(pics);
 };
 
+// Function to get all categories
 const category_list_get = async (req, res) => {
   const category = await userModel.getAllCategories(res);
   res.json(category);

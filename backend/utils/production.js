@@ -1,5 +1,7 @@
 'use strict';
 
+// Server environment
+
 module.exports = (app, port) => {
   app.enable('trust proxy');
   app.use ((req, res, next) => {

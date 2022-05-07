@@ -7,6 +7,7 @@ const router = express.Router();
 
 //Post routes
 
+// Checks file compatibility, file must be a jpeg or png
 const fileFilter = (req, file, cb) => {
   const allowedMimetypes = ['image/jpeg', 'image/png'];
   if (allowedMimetypes.includes(file.mimetype)) {
@@ -16,6 +17,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// Uploads file to server
 const upload = multer({dest: './uploads/', fileFilter});
 
 router.route(`/`)

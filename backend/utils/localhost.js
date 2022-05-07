@@ -6,6 +6,8 @@ const fs = require('fs');
 const sslkey = fs.readFileSync('ssl-key.pem');
 const sslcert = fs.readFileSync('ssl-cert.pem')
 
+// Localhost environment
+
 const options = {
   key: sslkey,
   cert: sslcert

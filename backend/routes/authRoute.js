@@ -5,6 +5,7 @@ const router = express.Router();
 const {body, sanitizeBody} = require('express-validator')
 const {login, user_post, logout} = require('../controllers/authController');
 
+// Routes to login, user register and logout
 router.post('/login', login);
 router.get('/logout', logout);
 router.post('/register',

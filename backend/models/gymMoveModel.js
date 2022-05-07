@@ -64,6 +64,7 @@ const deleteGymMove = async (id, res) => {
   }
 };
 
+// Gets random gym move from the database
 const getGymMoveofTheDay = async (res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves ORDER BY RAND() LIMIT 1');
@@ -75,6 +76,7 @@ const getGymMoveofTheDay = async (res) => {
   }
 };
 
+// Gets gym moves by category from the database
 const getGymMovebyCategory = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT * FROM GymMoves WHERE Category = ?', [category]);
@@ -86,6 +88,7 @@ const getGymMovebyCategory = async (category, res) => {
   }
 };
 
+// Updates gym move likes in the database
 const updateGymMoveLikes = async (id, res) => {
   try {
     const [rows] = await promisePool.query('UPDATE GymMoves SET Likes = Likes + 1 WHERE GymMoveId = ?', [id]);
@@ -98,6 +101,7 @@ const updateGymMoveLikes = async (id, res) => {
   }
 };
 
+// Gets gym moves category name from the database
 const getGymMoveCategoryName = async (category, res) => {
   try {
     const [rows] = await promisePool.query('SELECT CategoryName FROM Category RIGHT JOIN GymMoves ON Category.CategoryId = GymMoves.Category WHERE GymMoves.GymMoveId = ?', [category]);
