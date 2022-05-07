@@ -88,7 +88,6 @@ margin-right: 10px;
 }
 
 
-
 /* Reference: https://fdossena.com/?p=html5cool/buttons/i.frag*/
 
 button {
@@ -111,6 +110,9 @@ button {
 
 button:hover {
     box-shadow: var(--lightBlue) 0px 1px 10px;
+    transform: scale(1.08);
+}
+#navLinksRight:hover {
     transform: scale(1.08);
 }
 
@@ -168,10 +170,14 @@ footer {
     flex-direction: column;
 }
 #navLinksRight {
-    padding-top: 16px;
+    margin: 16px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-self: center;
+    min-height: 65px;
+    min-width: 65px;
+    cursor: pointer;
+    transition: all 0.2s;
+
 }
 
 .top-nav {

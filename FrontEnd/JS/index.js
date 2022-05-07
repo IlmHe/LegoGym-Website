@@ -1,5 +1,6 @@
 'use strict';
 
+
 //const url = 'https://localhost:8000';
 const url = 'https://10.114.32.55/app/';
 
@@ -21,7 +22,6 @@ const createPostCards = (posts) => {
   ul.appendChild(h2);
 
   posts.forEach((post) => {
-    // create li with DOM methods
     const img = document.createElement('img');
     img.src = url + '/' + post.PostImage;
     img.width = img.naturalWidth;
@@ -36,7 +36,10 @@ const createPostCards = (posts) => {
     const p1 = document.createElement('p');
     p1.innerHTML = `PostText: ${post.PostText}`;
 
-    const getPostCatAndUser = async () => {
+
+    //Gets two recent posts from db
+    const recentPostAndCategory = async () => {
+
       try {
         const fetchOptions = {
           headers: {
@@ -48,15 +51,16 @@ const createPostCards = (posts) => {
         const category = await responseCategory.json();
         const responseUser = await fetch(url + '/post/creatorname/' + post.PostId, fetchOptions);
         const user = await responseUser.json();
-        postCatAndUser(category, user);
+        postCategoryPost(category, user);
         console.log(category);
       } catch (e) {
         console.log(e.message);
       }
     }
 
-    getPostCatAndUser();
-    const postCatAndUser =  (category, user) => {
+    //Puts two recent posts into index.html
+    recentPostAndCategory();
+    const postCategoryPost =  (category, user) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Post category: ${category.CategoryName}`;
 
@@ -99,6 +103,7 @@ const createMoveOfTheDayCard = (move) => {
   // Headline for move of the day
   const h2 = document.createElement('h2');
   h2.classList.add('headingFont');
+  h2.classList.add('h2Text');
   h2.innerText = 'Gym Move of the Day';
   articleMiddle.appendChild(h2);
 
@@ -118,6 +123,8 @@ const createMoveOfTheDayCard = (move) => {
   p1.innerHTML = `MoveName: ${move.MoveName}`;
   divMotD.appendChild(p1);
 
+
+  //Gets category for move of the day
   const getMoveCategoryName = async () => {
     try {
       const fetchOptions = {

@@ -6,9 +6,13 @@ const viewScrollAllGymMoves = document.querySelector('.allGymMoves');
 
 const userGymMovesView = JSON.parse(sessionStorage.getItem('user'));
 
+
+//Adds gym moves(parameter) to the html page
+
 const createScrollableGymMoveCard = (moves) => {
 
   viewScrollAllGymMoves.innerHTML = '';
+
   // Headline for recent posts
   const h2 = document.createElement('h2');
   viewScrollAllGymMoves.appendChild(h2);
@@ -32,6 +36,7 @@ const createScrollableGymMoveCard = (moves) => {
     p1.innerHTML = `Name of the move: ${move.MoveName}`;
     divAllMoves.appendChild(p1);
 
+    //Gets category name for gym move
     const getMoveCategoryName = async () => {
       try {
         const fetchOptions = {
@@ -43,12 +48,12 @@ const createScrollableGymMoveCard = (moves) => {
         const responseCategory = await fetch(url + '/gymMove/categoryname/'+ move.GymMoveId, fetchOptions);
         const category = await responseCategory.json();
         moveCategory(category);
-        console.log(category);
       } catch (e) {
         console.log(e.message);
       }
     }
     getMoveCategoryName();
+
     const moveCategory =  (category) => {
       const p2 = document.createElement('p');
       p2.innerHTML = `Move category: ${category.CategoryName}`;
@@ -59,8 +64,8 @@ const createScrollableGymMoveCard = (moves) => {
     p3.innerHTML = `Likes: ${move.Likes}`;
     divAllMoves.appendChild(p3);
 
+    //if logged in, then like button shows/works
     if (userGymMovesView) {
-
       const likeButton = document.createElement('button');
       likeButton.innerText = 'Like';
       likeButton.classList.add('likeButton');
@@ -94,6 +99,7 @@ const createScrollableGymMoveCard = (moves) => {
   });
 }
 
+//fetches all gym moves from db and calls createScrollableGymMoveCard
 const viewAllMoves = async () => {
   try {
 
@@ -110,4 +116,5 @@ const viewAllMoves = async () => {
     console.log(e.message);
   }
 }
+
 viewAllMoves();

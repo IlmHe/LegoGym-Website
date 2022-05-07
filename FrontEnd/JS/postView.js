@@ -7,6 +7,7 @@ const viewScrollAllPosts = document.querySelector('.viewAllPosts');
 
 const userPostView = JSON.parse(sessionStorage.getItem('user'));
 
+//populates page with posts
 const createScrollablePostCard = (posts) => {
 
   viewScrollAllPosts.innerHTML = '';
@@ -33,7 +34,10 @@ const createScrollablePostCard = (posts) => {
     p1.innerHTML = `${post.PostText}`;
     divAllPosts.appendChild(p1);
 
-    const getPostCatAndUser = async () => {
+
+    //fetch poster data
+    const getCategoryAndUser = async () => {
+
       try {
         const fetchOptions = {
           headers: {
@@ -47,15 +51,19 @@ const createScrollablePostCard = (posts) => {
         const responseUser = await fetch(
             url + '/post/creatorname/' + post.PostId, fetchOptions);
         const user = await responseUser.json();
-        postCatAndUser(category, user);
+        postCategoryAndUser(category, user);
         console.log(category);
       } catch (e) {
         console.log(e.message);
       }
 
     }
-    getPostCatAndUser();
-    const postCatAndUser = (category, user) => {
+
+    getCategoryAndUser();
+
+    //populates poster data
+    const postCategoryAndUser =  (category, user) => {
+
       const p2 = document.createElement('p');
       p2.innerHTML = `Post category: ${category.CategoryName}`;
       divAllPosts.appendChild(p2);
@@ -68,6 +76,51 @@ const createScrollablePostCard = (posts) => {
     const p4 = document.createElement('p');
     p4.innerHTML = `Likes: ${post.PostLike}`;
     divAllPosts.appendChild(p4);
+
+
+
+    //if logged in
+    if (userPostView) {
+
+    if (userPostView === null) {
+      const p5 = document.createElement('p');
+      p5.innerHTML = 'You are not logged in';
+      divAllPosts.appendChild(p5);
+
+      //checks if admin
+    } else if (userPostView.Role === 1 || userPostView.Role === 0) {
+
+      const likeButton = document.createElement('button');
+      likeButton.innerText = 'Like';
+      likeButton.classList.add('likeButton');
+      likeButton.addEventListener('click', async (evt) => {
+        evt.preventDefault();
+        try {
+          const fetchOptions = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+          };
+          const response = await fetch(url + '/post/like/' + post.PostId, fetchOptions);
+          const updatedPost = await response.json();
+          console.log('Post liked', updatedPost);
+          viewAllPosts();
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+      divAllPosts.appendChild(likeButton);
+    }
+
+    if (userPostView === 'null') {
+      const p6 = document.createElement('p');
+      p6.innerHTML = 'You are not logged in';
+      divAllPosts.appendChild(p6);
+
+      //if you created post or are admin, you can delete posts
+    } else if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
 
     if (userPostView) {
 
@@ -99,6 +152,7 @@ const createScrollablePostCard = (posts) => {
       }
 
     if (userPostView.Role === 0 || userPostView.UserId === post.CreatedById) {
+
       const deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete';
       deleteButton.classList.add('likeButton');
@@ -125,6 +179,9 @@ const createScrollablePostCard = (posts) => {
     }
   }
 
+    }
+
+
     const divElement = document.createElement('div');
     divElement.classList.add('postCardDiv');
 
@@ -133,6 +190,8 @@ const createScrollablePostCard = (posts) => {
     viewScrollAllPosts.appendChild(divElement);
   });
 }
+
+//gets all posts from db
 
 const viewAllPosts = async () => {
   try {
