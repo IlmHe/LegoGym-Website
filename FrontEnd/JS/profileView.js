@@ -2,10 +2,6 @@
 //const url = 'https://localhost:8000';
 const url = 'https://10.114.32.55/app/';
 
-
-//const url = 'https://localhost:8000';
-const url = 'https://10.114.32.55/app/';
-
 const viewProfileInfo = document.querySelector('.profileViewInfo');
 
 // get user data
