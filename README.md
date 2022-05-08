@@ -34,8 +34,8 @@ $ npm i
 ```
 
 ## To test admin functionality use the following credentials:
-Email: legolover123@asd.fi
-Password: 1234
+**Email: legolover123@asd.fi**  
+**Password: 1234**
 
 ## List of all dependencies:
 https://www.npmjs.com/package/nodemon  
