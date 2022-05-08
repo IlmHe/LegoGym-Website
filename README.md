@@ -38,28 +38,28 @@ Email: legolover123@asd.fi
 Password: 1234
 
 ## List of all dependencies:
-https://www.npmjs.com/package/nodemon
-https://www.npmjs.com/package/mysql2
-https://www.npmjs.com/package/express
-https://www.npmjs.com/package/dotenv
-https://www.npmjs.com/package/express
-https://www.npmjs.com/package/express-validator
-https://www.npmjs.com/package/concat-map
-https://www.npmjs.com/package/cors
-https://www.npmjs.com/package//passport-local
-http://www.passportjs.org/packages/passport-jwt/
-https://www.npmjs.com/package/express-session
-https://www.npmjs.com/package/multer
-https://www.npmjs.com/package/bcryptjs
-https://www.npmjs.com/package/http
-https://www.npmjs.com/package/https
-https://nodejs.dev/learn/the-nodejs-fs-module
+https://www.npmjs.com/package/nodemon  
+https://www.npmjs.com/package/mysql2  
+https://www.npmjs.com/package/express  
+https://www.npmjs.com/package/dotenv  
+https://www.npmjs.com/package/express  
+https://www.npmjs.com/package/express-validator  
+https://www.npmjs.com/package/concat-map  
+https://www.npmjs.com/package/cors  
+https://www.npmjs.com/package//passport-local  
+http://www.passportjs.org/packages/passport-jwt/  
+https://www.npmjs.com/package/express-session  
+https://www.npmjs.com/package/multer  
+https://www.npmjs.com/package/bcryptjs  
+https://www.npmjs.com/package/http  
+https://www.npmjs.com/package/https  
+https://nodejs.dev/learn/the-nodejs-fs-module  
 
 ## References:
-https://github.com/IlmHe/WebCourseWeek2
-https://gitlab.metropolia.fi/wtp-3011/server-two/-/tree/main
-https://github.com/patrick-ausderau/wop-ui
+https://github.com/IlmHe/WebCourseWeek2  
+https://gitlab.metropolia.fi/wtp-3011/server-two/-/tree/main  
+https://github.com/patrick-ausderau/wop-ui  
 
 ## Contributors:
-https://github.com/IlmHe
-https://github.com/jannhakk
+https://github.com/IlmHe  
+https://github.com/jannhakk  
