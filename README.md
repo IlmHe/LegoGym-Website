@@ -37,7 +37,7 @@ $ npm i
 Email: legolover123@asd.fi
 Password: 1234
 
-##List of all dependencies:
+## List of all dependencies:
 https://www.npmjs.com/package/nodemon
 https://www.npmjs.com/package/mysql2
 https://www.npmjs.com/package/express
@@ -55,7 +55,7 @@ https://www.npmjs.com/package/http
 https://www.npmjs.com/package/https
 https://nodejs.dev/learn/the-nodejs-fs-module
 
-##References:
+## References:
 https://github.com/IlmHe/WebCourseWeek2
 https://gitlab.metropolia.fi/wtp-3011/server-two/-/tree/main
 https://github.com/patrick-ausderau/wop-ui
