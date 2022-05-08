@@ -7,7 +7,7 @@ Users can create their own profiles.
 
 ## How to start using LegoGym
 
-## Create an .env file in the root directory and Add the following lines to the file:
+## Create an .env file in the root directory and add the following lines to the file:
 
 ```
 DB_HOST=host name
