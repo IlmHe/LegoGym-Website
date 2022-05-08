@@ -5,9 +5,9 @@ Lego Gym is a web application that allows users to create and share their own gy
 They can view and like other users' posts and also create their own posts.
 Users can create their own profiles.
 
-## How to start using LegoGym
-### Clone the repo to your local machine
-## Create an .env file in the root directory and add the following lines to the file:
+# How to start using LegoGym
+## 1. Clone the repo to your local machine
+## 2. Create an .env file in the root directory and add the following lines to the file:
 
 ```
 DB_HOST=host name
@@ -18,24 +18,25 @@ PROXY_PASS=/legoapp
 NODE_ENV=localhost/or production
 ```
 
-## Create a database in MySQL
+## 3. Create a database in MySQL
 Use the legogymdb.sql file to create a database.
 
-## Create ssl.crt and ssl.key files in the root directory
+## 4. Create ssl.crt and ssl.key files in the root directory
 ```
 $ openssl genrsa -out ssl-key.pem 2048
 $ openssl req -new -key ssl-key.pem -out certrequest.csr
 $ openssl x509 -req -in certrequest.csr -signkey ssl-key.pem -out ssl-cert.pem
 ```
 
+## 5. npm install to install all dependencies
+```
+$ npm i
+```
+
 ## To test admin functionality use the following credentials:
 Email: legolover123@asd.fi
 Password: 1234
 
-## npm install to install all dependencies
-```
-$ npm i
-```
 ##List of all dependencies:
 https://www.npmjs.com/package/nodemon
 https://www.npmjs.com/package/mysql2
