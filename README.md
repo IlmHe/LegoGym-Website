@@ -7,9 +7,8 @@ Users can create their own profiles.
 
 ## How to start using LegoGym
 
-## Create an .env file and fill it with the following information:
-Create .env file in root directory
-Add the following lines to the file:
+## Create an .env file in the root directory and Add the following lines to the file:
+
 ```
 DB_HOST=host name
 DB_NAME=name_of_database
@@ -22,7 +21,7 @@ NODE_ENV=localhost/or production
 ## Create a database in MySQL
 Use the legogymdb.sql file to create a database.
 
-## Creater ssl.crt and ssl.key files in the root directory
+## Create ssl.crt and ssl.key files in the root directory
 ```
 $ openssl genrsa -out ssl-key.pem 2048
 $ openssl req -new -key ssl-key.pem -out certrequest.csr
