@@ -10,10 +10,10 @@ Users can create their own profiles.
 ## 2. Create an .env file in the root directory and add the following lines to the file:
 
 ```
-DB_HOST=host name
-DB_NAME=name_of_database
-DB_USER=database_username
-DB_PASS=database_password
+DB_HOST='host_name'
+DB_NAME='name_of_database'
+DB_USER='database_username'
+DB_PASS='database_password'
 PROXY_PASS=/legoapp
 NODE_ENV=localhost/or production
 ```
