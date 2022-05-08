@@ -5,7 +5,7 @@ Lego Gym is a web application that allows users to create and share their own gy
 They can view and like other users' posts and also create their own posts.
 Users can create their own profiles.
 
-##How to start using LegoGym
+## How to start using LegoGym
 
 ## Create an .env file and fill it with the following information:
 Create .env file in root directory
