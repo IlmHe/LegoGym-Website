@@ -6,7 +6,7 @@ They can view and like other users' posts and also create their own posts.
 Users can create their own profiles.
 
 ## How to start using LegoGym
-
+After cloning the repo
 ## Create an .env file in the root directory and add the following lines to the file:
 
 ```
