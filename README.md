@@ -21,7 +21,7 @@ NODE_ENV=localhost/or production
 ## 3. Create a database in MySQL
 Use the legogymdb.sql file to create a database.
 
-## 4. Create ssl.crt and ssl.key files in the root directory
+## 4. Create ssl.crt, ssl.key, and certrequest.csr files in the root directory
 ```
 $ openssl genrsa -out ssl-key.pem 2048
 $ openssl req -new -key ssl-key.pem -out certrequest.csr
